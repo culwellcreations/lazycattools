@@ -3,13 +3,18 @@
 /* ── Brand Tokens ─────────────────────────────────────────────────────────── */
 
 :root {
-  --bg:           #FAF8F2;
+  --bg:           #F5F4FF;
   --surface:      #FFFFFF;
-  --accent:       #F0A500;
-  --accent-hover: #C98A00;
+  --accent:       #3730A3;
+  --accent-hover: #312E81;
+  --highlight:    #BE123C;
+  --warm:         #B45309;
+  --warm-bg:      #FEF3C7;
+  --warm-border:  #FCD34D;
+  --warm-text:    #78350F;
   --ink:          #1C1C1C;
-  --stone:        #888880;
-  --border:       #E8E4DC;
+  --stone:        #6B6A64;
+  --border:       #D5D1F5;
   --font:         'Nunito', system-ui, sans-serif;
   --radius-sm:    6px;
   --radius:       10px;
@@ -109,7 +114,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   min-height: 90px;
-  background: #faf8f0;
+  background: var(--bg);
   border: 1.5px dashed var(--border);
   border-radius: var(--radius);
   display: flex;
@@ -178,13 +183,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: #fff8e6;
-  border: 1px solid #f5d98a;
+  background: var(--warm-bg);
+  border: 1px solid var(--warm-border);
   border-radius: 999px;
   padding: 0.25rem 0.75rem 0.25rem 0.55rem;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #7a5200;
+  color: var(--warm-text);
   letter-spacing: 0.02em;
   margin-bottom: 0.85rem;
 }
@@ -194,13 +199,13 @@ body {
 .tool-card-icon {
   width: 40px;
   height: 40px;
-  background: #fff8e6;
-  border: 1px solid #f5d98a;
+  background: var(--warm-bg);
+  border: 1px solid var(--warm-border);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  color: var(--warm);
   margin-bottom: 0.75rem;
   flex-shrink: 0;
 }

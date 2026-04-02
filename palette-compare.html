@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palette B Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: #e8e8e8;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  h1 { font-size: 1.1rem; font-weight: 700; color: #333; text-align: center; }
+  .subtitle { text-align: center; font-size: 0.72rem; color: #777; margin-top: 0.25rem; margin-bottom: 0.5rem; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+  .swatch { border-radius: 14px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.13); background: #fff; display: flex; flex-direction: column; }
+
+  .palette-meta { padding: 0.75rem 1rem 0.6rem; background: #fff; border-bottom: 1px solid #eee; }
+  .palette-name { font-size: 0.85rem; font-weight: 800; color: #222; }
+  .palette-desc { font-size: 0.65rem; color: #888; margin-top: 0.1rem; line-height: 1.4; }
+  .palette-dots { display: flex; gap: 0.35rem; margin-top: 0.5rem; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.08); }
+
+  .swatch-body { flex: 1; display: flex; flex-direction: column; }
+
+  .mock-header { padding: 0.55rem 0.9rem; display: flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+  .mock-logo-text { font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+  .mock-logo-icon { width: 18px; height: 22px; }
+
+  .mock-body { background: var(--bg); padding: 0.85rem 0.9rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+
+  .mock-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: var(--badge-bg); border: 1px solid var(--badge-border); border-radius: 999px; padding: 0.15rem 0.55rem; font-size: 0.6rem; font-weight: 700; color: var(--badge-text); width: fit-content; }
+
+  .mock-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary); border-radius: 8px; padding: 0.65rem 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .mock-icon { width: 26px; height: 26px; background: var(--icon-bg); border: 1px solid var(--icon-border); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--tertiary); }
+
+  .mock-label { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--stone); }
+
+  .mock-textarea { width: 100%; height: 38px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); resize: none; font-family: 'Nunito', system-ui, sans-serif; font-size: 0.62rem; padding: 0.3rem 0.4rem; color: var(--stone); line-height: 1.5; }
+
+  .mock-btn { width: 100%; background: var(--primary); color: #fff; border: none; border-radius: 7px; padding: 0.42rem; font-size: 0.7rem; font-weight: 700; font-family: 'Nunito', system-ui, sans-serif; cursor: default; letter-spacing: 0.01em; }
+
+  .mock-winner { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 0.5rem 0.6rem; text-align: center; }
+  .mock-winner-label { font-size: 0.52rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stone); margin-bottom: 0.15rem; }
+  .mock-winner-name { font-size: 1.05rem; font-weight: 800; color: var(--secondary); letter-spacing: -0.02em; }
+
+  .mock-xlink { background: var(--xlink-bg); border: 1px solid var(--xlink-border); border-radius: 7px; padding: 0.4rem 0.55rem; font-size: 0.58rem; color: var(--tertiary); font-weight: 700; display: flex; align-items: center; gap: 0.3rem; }
+
+  /* ── B-Original ───────────────────────────────── */
+  .b1 {
+    --bg: #F8F7FF; --surface: #FFF; --border: #DDD9F9; --ink: #1C1C1C; --stone: #888880;
+    --primary: #4F46E5; --secondary: #F43F5E; --tertiary: #D97706;
+    --badge-bg: #FFF8E6; --badge-border: #FDDBA0; --badge-text: #92400E;
+    --icon-bg: #FFF8E6; --icon-border: #FDDBA0;
+    --xlink-bg: #FFF8E6; --xlink-border: #FDDBA0;
+  }
+
+  /* ── B-Soft ───────────────────────────────────── */
+  /* Lighter indigo, softer pink-rose, golden amber — feels friendlier */
+  .b2 {
+    --bg: #FAFAFF; --surface: #FFF; --border: #E4E2F8; --ink: #1C1C1C; --stone: #888880;
+    --primary: #818CF8; --secondary: #FB7185; --tertiary: #F59E0B;
+    --badge-bg: #FFFBEB; --badge-border: #FDE68A; --badge-text: #92400E;
+    --icon-bg: #FFFBEB; --icon-border: #FDE68A;
+    --xlink-bg: #FFFBEB; --xlink-border: #FDE68A;
+  }
+
+  /* ── B-Deep ───────────────────────────────────── */
+  /* Darker, richer — more authoritative and bold */
+  .b3 {
+    --bg: #F5F4FF; --surface: #FFF; --border: #D5D1F5; --ink: #1C1C1C; --stone: #888880;
+    --primary: #3730A3; --secondary: #BE123C; --tertiary: #B45309;
+    --badge-bg: #FEF3C7; --badge-border: #FCD34D; --badge-text: #78350F;
+    --icon-bg: #FEF3C7; --icon-border: #FCD34D;
+    --xlink-bg: #FEF3C7; --xlink-border: #FCD34D;
+  }
+
+  /* ── B-Cool ───────────────────────────────────── */
+  /* Same indigo + rose, but swap amber for teal as third accent — no warm tones */
+  .b4 {
+    --bg: #F6F5FF; --surface: #FFF; --border: #DDDAF8; --ink: #1C1C1C; --stone: #888880;
+    --primary: #4F46E5; --secondary: #F43F5E; --tertiary: #0891B2;
+    --badge-bg: #E0F5F9; --badge-border: #A5D8E6; --badge-text: #0C5F72;
+    --icon-bg: #E0F5F9; --icon-border: #A5D8E6;
+    --xlink-bg: #E0F5F9; --xlink-border: #A5D8E6;
+  }
+</style>
+</head>
+<body>
+
+<h1>Palette B — Variations</h1>
+<p class="subtitle">Indigo + Rose base · tweaking saturation, depth, and third accent</p>
+
+<div class="grid">
+
+  <!-- B1 Original -->
+  <div class="swatch b1">
+    <div class="palette-meta">
+      <div class="palette-name">B — Original</div>
+      <div class="palette-desc">Indigo · Rose · Amber<br>The baseline from last round</div>
+      <div class="palette-dots">
+        <div class="dot" style="background:#4F46E5"></div>
+        <div class="dot" style="background:#F43F5E"></div>
+        <div class="dot" style="background:#D97706"></div>
+      </div>
+    </div>
+    <div class="swatch-body">
+      <div class="mock-header">
+        <svg class="mock-logo-icon" viewBox="0 0 50 60" fill="none"><ellipse cx="25" cy="46" rx="16" ry="14" fill="#4F46E5"/><circle cx="25" cy="22" r="14" fill="#4F46E5"/><path d="M14 16 L10 4 L21 14Z" fill="#4F46E5"/><path d="M29 14 L40 4 L36 16Z" fill="#4F46E5"/></svg>
+        <span class="mock-logo-text">Lazy Cat Tools</span>
+      </div>
+      <div class="mock-body">
+        <div class="mock-badge">✦ Free forever · No sign-up</div>
+        <div class="mock-card">
+          <div class="mock-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
+          <div class="mock-label">Names</div>
+          <textarea class="mock-textarea" readonly>Alice&#10;Bob&#10;Charlie</textarea>
+          <button class="mock-btn">Pick a Name</button>
+        </div>
+        <div class="mock-winner"><div class="mock-winner-label">Winner</div><div class="mock-winner-name">Charlie</div></div>
+        <div class="mock-xlink"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>Need teams? → Random Team Generator</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B2 Soft -->
+  <div class="swatch b2">
+    <div class="palette-meta">
+      <div class="palette-name">B-Soft</div>
+      <div class="palette-desc">Lilac · Soft Pink · Golden<br>Friendlier, lighter feel</div>
+      <div class="palette-dots">
+        <div class="dot" style="background:#818CF8"></div>
+        <div class="dot" style="background:#FB7185"></div>
+        <div class="dot" style="background:#F59E0B"></div>
+      </div>
+    </div>
+    <div class="swatch-body">
+      <div class="mock-header">
+        <svg class="mock-logo-icon" viewBox="0 0 50 60" fill="none"><ellipse cx="25" cy="46" rx="16" ry="14" fill="#818CF8"/><circle cx="25" cy="22" r="14" fill="#818CF8"/><path d="M14 16 L10 4 L21 14Z" fill="#818CF8"/><path d="M29 14 L40 4 L36 16Z" fill="#818CF8"/></svg>
+        <span class="mock-logo-text">Lazy Cat Tools</span>
+      </div>
+      <div class="mock-body">
+        <div class="mock-badge">✦ Free forever · No sign-up</div>
+        <div class="mock-card">
+          <div class="mock-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
+          <div class="mock-label">Names</div>
+          <textarea class="mock-textarea" readonly>Alice&#10;Bob&#10;Charlie</textarea>
+          <button class="mock-btn">Pick a Name</button>
+        </div>
+        <div class="mock-winner"><div class="mock-winner-label">Winner</div><div class="mock-winner-name">Charlie</div></div>
+        <div class="mock-xlink"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>Need teams? → Random Team Generator</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B3 Deep -->
+  <div class="swatch b3">
+    <div class="palette-meta">
+      <div class="palette-name">B-Deep</div>
+      <div class="palette-desc">Deep Indigo · Crimson · Dark Amber<br>Richer, more authoritative</div>
+      <div class="palette-dots">
+        <div class="dot" style="background:#3730A3"></div>
+        <div class="dot" style="background:#BE123C"></div>
+        <div class="dot" style="background:#B45309"></div>
+      </div>
+    </div>
+    <div class="swatch-body">
+      <div class="mock-header">
+        <svg class="mock-logo-icon" viewBox="0 0 50 60" fill="none"><ellipse cx="25" cy="46" rx="16" ry="14" fill="#3730A3"/><circle cx="25" cy="22" r="14" fill="#3730A3"/><path d="M14 16 L10 4 L21 14Z" fill="#3730A3"/><path d="M29 14 L40 4 L36 16Z" fill="#3730A3"/></svg>
+        <span class="mock-logo-text">Lazy Cat Tools</span>
+      </div>
+      <div class="mock-body">
+        <div class="mock-badge">✦ Free forever · No sign-up</div>
+        <div class="mock-card">
+          <div class="mock-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
+          <div class="mock-label">Names</div>
+          <textarea class="mock-textarea" readonly>Alice&#10;Bob&#10;Charlie</textarea>
+          <button class="mock-btn">Pick a Name</button>
+        </div>
+        <div class="mock-winner"><div class="mock-winner-label">Winner</div><div class="mock-winner-name">Charlie</div></div>
+        <div class="mock-xlink"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>Need teams? → Random Team Generator</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B4 Cool -->
+  <div class="swatch b4">
+    <div class="palette-meta">
+      <div class="palette-name">B-Cool</div>
+      <div class="palette-desc">Indigo · Rose · Teal<br>No warm tones — fully cool</div>
+      <div class="palette-dots">
+        <div class="dot" style="background:#4F46E5"></div>
+        <div class="dot" style="background:#F43F5E"></div>
+        <div class="dot" style="background:#0891B2"></div>
+      </div>
+    </div>
+    <div class="swatch-body">
+      <div class="mock-header">
+        <svg class="mock-logo-icon" viewBox="0 0 50 60" fill="none"><ellipse cx="25" cy="46" rx="16" ry="14" fill="#4F46E5"/><circle cx="25" cy="22" r="14" fill="#4F46E5"/><path d="M14 16 L10 4 L21 14Z" fill="#4F46E5"/><path d="M29 14 L40 4 L36 16Z" fill="#4F46E5"/></svg>
+        <span class="mock-logo-text">Lazy Cat Tools</span>
+      </div>
+      <div class="mock-body">
+        <div class="mock-badge">✦ Free forever · No sign-up</div>
+        <div class="mock-card">
+          <div class="mock-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
+          <div class="mock-label">Names</div>
+          <textarea class="mock-textarea" readonly>Alice&#10;Bob&#10;Charlie</textarea>
+          <button class="mock-btn">Pick a Name</button>
+        </div>
+        <div class="mock-winner"><div class="mock-winner-label">Winner</div><div class="mock-winner-name">Charlie</div></div>
+        <div class="mock-xlink"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>Need teams? → Random Team Generator</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
