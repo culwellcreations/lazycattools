@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBCK7DP1KN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBCK7DP1KN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Cat Tools — Free Browser Tools</title>
+  <meta name="description" content="Simple, free browser tools. No sign-up, no accounts. Just the thing you needed.">
+  <meta property="og:title" content="Lazy Cat Tools — Free Browser Tools">
+  <meta property="og:description" content="Simple, free browser tools. No sign-up, no accounts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lazycattools.com/">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    .home-main {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+      flex: 1;
+    }
+
+    .home-hero {
+      margin-bottom: 2.5rem;
+    }
+
+    .home-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .home-hero p {
+      margin-top: 0.4rem;
+      color: var(--stone);
+      font-size: 1rem;
+    }
+
+    .tools-section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--stone);
+      margin-bottom: 1rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .tool-card-link {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .tool-card-link:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(240, 165, 0, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .tool-card-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .tool-card-link h3 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tool-card-link p {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      color: var(--stone);
+      line-height: 1.4;
+    }
+
+    .tool-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.875rem;
+    }
+
+    .tool-card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+
+    .tool-card-arrow {
+      color: var(--stone);
+      opacity: 0.45;
+      transition: color 0.15s, transform 0.15s, opacity 0.15s;
+    }
+
+    .tool-card-link:hover .tool-card-arrow {
+      color: var(--accent);
+      opacity: 1;
+      transform: translateX(3px);
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo" aria-label="Lazy Cat Tools home">
+        <img class="site-logo-icon" src="/assets/images/lazy cat.svg" alt="" aria-hidden="true">
+        <span class="site-logo-text">Lazy Cat Tools</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content" class="home-main">
+    <div class="home-hero">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 50 60" aria-hidden="true" focusable="false">
+          <ellipse cx="25" cy="46" rx="16" ry="14" fill="#C98A00"/>
+          <circle cx="25" cy="22" r="14" fill="#C98A00"/>
+          <path d="M 14 16 L 10 4 L 21 14 Z" fill="#C98A00"/>
+          <path d="M 29 14 L 40 4 L 36 16 Z" fill="#C98A00"/>
+        </svg>
+        Free forever · No sign-up
+      </div>
+      <h1>Simple tools. No sign-up.</h1>
+      <p>Free browser tools that do what they say.</p>
+    </div>
+
+    <section class="tools-section" aria-label="Available tools">
+      <h2>Tools</h2>
+      <div class="tools-grid">
+
+        <a href="/tools/random-team-generator/" class="tool-card-link">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+          </div>
+          <h3>Random Team Generator</h3>
+          <p>Split any group into balanced teams instantly.</p>
+          <div class="tool-card-footer">
+            <span class="tool-card-tag">Free</span>
+            <svg class="tool-card-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-cat-wrap" aria-hidden="true">
+      <img class="footer-cat-peek" src="/assets/images/lazy cat.svg" alt="" aria-hidden="true">
+    </div>
+    <div class="site-footer-inner">
+      <p>© 2026 Lazy Cat Tools</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/pages/about/">About</a>
+        <a href="/pages/privacy/">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

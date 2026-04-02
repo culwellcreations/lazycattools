@@ -1,0 +1,215 @@
+/* Lazy Cat Tools — Shared Styles */
+
+/* ── Brand Tokens ─────────────────────────────────────────────────────────── */
+
+:root {
+  --bg:           #FAF8F2;
+  --surface:      #FFFFFF;
+  --accent:       #F0A500;
+  --accent-hover: #C98A00;
+  --ink:          #1C1C1C;
+  --stone:        #888880;
+  --border:       #E8E4DC;
+  --font:         'Nunito', system-ui, sans-serif;
+  --radius-sm:    6px;
+  --radius:       10px;
+  --radius-lg:    14px;
+  --max-width:    900px;
+  --tool-max:     720px;
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Skip Link ────────────────────────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.1s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Site Header ──────────────────────────────────────────────────────────── */
+
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  flex-shrink: 0;
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-logo-icon {
+  width: 32px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.site-logo-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.site-logo:hover .site-logo-text { color: var(--accent); }
+
+.site-logo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Ad Slots ─────────────────────────────────────────────────────────────── */
+
+.ad-slot {
+  width: 100%;
+  max-width: var(--tool-max);
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 90px;
+  background: #faf8f0;
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stone);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+.ad-slot::after { content: 'Ad'; pointer-events: none; }
+.ad-top    { margin-top: 1.25rem; margin-bottom: 1.25rem; }
+.ad-bottom { margin-top: 1.25rem; margin-bottom: 1.25rem; }
+
+@media (max-width: 540px) { .ad-slot { min-height: 50px; } }
+
+/* ── Site Footer ──────────────────────────────────────────────────────────── */
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding: 0 1.5rem 2rem;
+  text-align: center;
+}
+
+.footer-cat-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -1px;
+}
+
+.footer-cat-peek { width: 64px; display: block; }
+
+.site-footer-inner {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-footer-inner p { font-size: 0.8rem; color: var(--stone); }
+
+.footer-nav { display: flex; gap: 1.25rem; align-items: center; }
+
+.footer-nav a {
+  font-size: 0.8rem;
+  color: var(--stone);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-nav a:hover { color: var(--ink); }
+
+.footer-nav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Hero Badge ───────────────────────────────────────────────────────────── */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #fff8e6;
+  border: 1px solid #f5d98a;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem 0.25rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7a5200;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Tool Card Icon ───────────────────────────────────────────────────────── */
+
+.tool-card-icon {
+  width: 40px;
+  height: 40px;
+  background: #fff8e6;
+  border: 1px solid #f5d98a;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ── Reduced Motion ───────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
