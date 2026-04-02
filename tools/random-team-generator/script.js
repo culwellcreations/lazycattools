@@ -273,6 +273,12 @@ function generate(seed) {
 
   state = { names, teamCount, seed: usedSeed, teams, teamLabels: labels, useRandomNames };
   renderTeams(teams, labels);
+
+  const crosslink = document.getElementById('crosslink-pick');
+  if (crosslink) {
+    const params = new URLSearchParams({ names: labels.join(',') });
+    crosslink.href = `/tools/random-name-picker/?${params.toString()}`;
+  }
 }
 
 // ─── Event Listeners ──────────────────────────────────────────────────────────
