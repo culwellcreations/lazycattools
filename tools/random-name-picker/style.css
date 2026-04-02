@@ -1,4 +1,4 @@
-/* Random Team Generator — Tool Styles */
+/* Random Name Picker — Tool Styles */
 /* Inherits brand tokens from /assets/css/site.css */
 
 /* ── Tool Layout ──────────────────────────────────────────────────────────── */
@@ -49,12 +49,6 @@
   gap: 0.4rem;
 }
 
-.field-group--inline {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 label {
   font-size: 0.9rem;
   font-weight: 600;
@@ -80,7 +74,7 @@ textarea {
   color: var(--ink);
   background: var(--bg);
   resize: vertical;
-  min-height: 160px;
+  min-height: 140px;
   transition: border-color 0.15s;
 }
 
@@ -103,7 +97,7 @@ textarea.drag-over {
   align-items: center;
   gap: 0.6rem;
   flex-wrap: wrap;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .btn-upload {
@@ -123,15 +117,8 @@ textarea.drag-over {
   min-height: 44px;
 }
 
-.btn-upload:hover {
-  background: #fef0c0;
-  border-color: var(--accent);
-}
-
-.btn-upload:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
-}
+.btn-upload:hover { background: #fef0c0; border-color: var(--accent); }
+.btn-upload:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 input[type="file"] {
   position: absolute;
@@ -148,75 +135,6 @@ input[type="file"] {
   font-weight: 600;
 }
 
-/* ── Controls Row ─────────────────────────────────────────────────────────── */
-
-.controls-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-/* ── Stepper ──────────────────────────────────────────────────────────────── */
-
-.stepper {
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-.stepper-btn {
-  width: 44px;
-  height: 44px;
-  background: var(--bg);
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--ink);
-  transition: background 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  touch-action: manipulation;
-  font-family: var(--font);
-}
-
-.stepper-btn:hover        { background: #fff0c0; }
-.stepper-btn:active       { background: #ffe080; }
-.stepper-btn:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.stepper input[type="number"] {
-  width: 48px;
-  height: 44px;
-  border: none;
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
-  font-family: var(--font);
-  color: var(--ink);
-  background: var(--surface);
-  -moz-appearance: textfield;
-}
-
-.stepper input[type="number"]::-webkit-inner-spin-button,
-.stepper input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-
-.stepper input[type="number"]:focus {
-  outline: none;
-  background: #fff8e6;
-}
-
 /* ── Toggle ───────────────────────────────────────────────────────────────── */
 
 .toggle-label {
@@ -224,7 +142,7 @@ input[type="file"] {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  font-weight: 400;
+  font-weight: 600;
   cursor: pointer;
   user-select: none;
   min-height: 44px;
@@ -261,10 +179,7 @@ input[type="file"] {
 
 .btn-primary:hover        { background: var(--accent-hover); box-shadow: 0 3px 10px rgba(240, 165, 0, 0.35); }
 .btn-primary:active       { transform: scale(0.98); }
-.btn-primary:focus-visible {
-  outline: 3px solid var(--ink);
-  outline-offset: 3px;
-}
+.btn-primary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
 .btn-secondary {
   display: inline-flex;
@@ -286,10 +201,7 @@ input[type="file"] {
 
 .btn-secondary:hover        { background: var(--bg); border-color: #c8c0b0; }
 .btn-secondary:active       { background: #fff0c0; }
-.btn-secondary:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
-}
+.btn-secondary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 /* ── Results ──────────────────────────────────────────────────────────────── */
 
@@ -300,75 +212,51 @@ input[type="file"] {
 }
 
 .results-heading {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--stone);
 }
 
-.results-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.875rem;
-}
+/* ── Winner Display ───────────────────────────────────────────────────────── */
 
-@media (min-width: 480px) {
-  .results-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 760px) {
-  .results-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* ── Team Cards ───────────────────────────────────────────────────────────── */
-
-.team-card {
-  background: var(--surface);
+.winner-display {
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.team-card-header {
-  padding: 0.65rem 0.9rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
 }
 
-.team-name {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1.3;
+.winner-name {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  font-weight: 800;
+  color: var(--accent-dark, #b07800);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  word-break: break-word;
 }
 
-.member-count {
-  color: #ffffff;
-  font-size: 0.78rem;
+.winner-meta {
+  font-size: 0.85rem;
+  color: var(--stone);
   font-weight: 600;
-  white-space: nowrap;
 }
 
-.team-card-body {
-  list-style: none;
-  padding: 0.65rem 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  background: var(--surface);
+@keyframes winner-pop {
+  0%   { transform: scale(0.85); opacity: 0; }
+  60%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
 }
 
-.team-card-body li {
-  font-size: 0.92rem;
-  color: var(--ink);
-  padding: 0.2rem 0;
-  border-bottom: 1px solid var(--border);
+.winner--pop .winner-name {
+  animation: winner-pop 0.3s ease-out both;
 }
-
-.team-card-body li:last-child { border-bottom: none; }
 
 /* ── Action Row ───────────────────────────────────────────────────────────── */
 
@@ -377,6 +265,52 @@ input[type="file"] {
   gap: 0.6rem;
   flex-wrap: wrap;
 }
+
+/* ── Empty State ──────────────────────────────────────────────────────────── */
+
+.empty-state {
+  text-align: center;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--stone);
+  font-size: 0.95rem;
+}
+
+/* ── Cross-link Card ──────────────────────────────────────────────────────── */
+
+.crosslink-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fff8e6;
+  border: 1px solid #f5d98a;
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.crosslink-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.crosslink-card strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.crosslink-card a {
+  color: var(--accent-dark, #b07800);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.crosslink-card a:hover { text-decoration: underline; }
 
 /* ── Toast ────────────────────────────────────────────────────────────────── */
 
@@ -409,72 +343,4 @@ input[type="file"] {
 @keyframes toast-out {
   from { opacity: 1; transform: translateX(-50%) translateY(0); }
   to   { opacity: 0; transform: translateX(-50%) translateY(8px); }
-}
-
-/* ── Cross-link Banner ────────────────────────────────────────────────────── */
-
-.crosslink-banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: #fff8e6;
-  border-top: 1px solid #f5d98a;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.9rem;
-  color: var(--stone);
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.crosslink-banner a {
-  color: var(--accent-dark, #b07800);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.crosslink-banner a:hover { text-decoration: underline; }
-
-/* ── Print ────────────────────────────────────────────────────────────────── */
-
-@media print {
-  .skip-link, .site-header, .ad-slot, .tool-header,
-  .input-section, .action-row, .site-footer { display: none !important; }
-
-  body { background: #fff; display: block; }
-
-  .tool-main { padding: 0; max-width: 100%; }
-
-  .tool-card {
-    border: none;
-    box-shadow: none;
-    padding: 0;
-  }
-
-  .results-section::before {
-    content: 'Team Results';
-    display: block;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
-
-  .results-heading { display: none; }
-
-  .results-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-
-  .team-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1.5px solid #ccc;
-  }
-
-  .team-card-header {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .team-name, .member-count { color: #fff !important; }
-
-  .team-card-body { background: #fff; }
 }
