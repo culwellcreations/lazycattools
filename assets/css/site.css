@@ -217,35 +217,46 @@ body {
 .faq-section {
   width: 100%;
   max-width: var(--tool-max);
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.5rem;
   padding: 0 1.5rem;
 }
 
+.faq-inner {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
 .faq-inner h2 {
-  font-size: 1.05rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  margin-bottom: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.faq-inner h2:first-child {
+  margin-top: 0;
 }
 
 .faq-inner > p {
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   color: var(--stone);
   line-height: 1.65;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .faq-inner details {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   background: var(--surface);
 }
 
 .faq-inner details summary {
   padding: 0.75rem 1rem;
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   list-style: none;
@@ -253,17 +264,19 @@ body {
   justify-content: space-between;
   align-items: center;
   user-select: none;
+  color: var(--ink);
 }
 
 .faq-inner details summary::-webkit-details-marker { display: none; }
+.faq-inner details summary::marker { display: none; }
 
 .faq-inner details summary::after {
   content: '+';
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--stone);
   flex-shrink: 0;
   margin-left: 1rem;
-  transition: transform 0.2s;
 }
 
 .faq-inner details[open] summary::after {
@@ -271,13 +284,11 @@ body {
 }
 
 .faq-inner details p {
-  padding: 0 1rem 0.875rem;
-  font-size: 0.9rem;
+  padding: 0.6rem 1rem 0.875rem;
+  font-size: 0.875rem;
   color: var(--stone);
-  line-height: 1.65;
+  line-height: 1.7;
   border-top: 1px solid var(--border);
-  margin-top: 0;
-  padding-top: 0.75rem;
 }
 
 .faq-inner details summary:focus-visible {
