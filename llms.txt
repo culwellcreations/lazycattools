@@ -1,0 +1,26 @@
+# Lazy Cat Tools
+
+> Simple, free browser tools. No sign-up, no accounts. Just the thing you needed.
+
+Lazy Cat Tools (lazycattools.com) is a collection of lightweight, client-side utility tools designed for everyday use. All tools run entirely in the browser — no data is sent to a server, no accounts are required, and everything is free.
+
+## Tools
+
+- [Random Team Generator](https://lazycattools.com/tools/random-team-generator/): Split any list of names into random, balanced teams. Supports 2–10 teams, uneven group sizes, file upload (.txt/.csv), random team name generation, and shareable result links. Used by teachers, coaches, trivia hosts, and team leads.
+
+- [Random Name Picker](https://lazycattools.com/tools/random-name-picker/): Pick a random winner or participant from any list of names. Useful for giveaways, classroom callouts, raffle draws, and any situation where you need an impartial pick.
+
+- [Coin Flip](https://lazycattools.com/tools/coin-flip/): Flip a virtual coin and get an instant heads or tails result. Simple 50/50 decision-making tool.
+
+## Site Pages
+
+- [Home](https://lazycattools.com/): Tool directory listing all available tools.
+- [About](https://lazycattools.com/pages/about/): Background on the site and its philosophy.
+- [Privacy Policy](https://lazycattools.com/pages/privacy/): No personal data is collected. Tools run client-side only.
+
+## About This Site
+
+- **Owner:** Lazy Cat Tools / Culwell Creations
+- **Monetization:** Google AdSense display ads
+- **Tech stack:** Static HTML, CSS, vanilla JavaScript — hosted on Cloudflare Pages
+- **Philosophy:** Ship simple tools fast, keep them free, no accounts or data collection
