@@ -298,6 +298,18 @@ body {
   margin-bottom: 1.25rem;
 }
 
+.faq-inner > ul {
+  font-size: 0.9rem;
+  color: var(--stone);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.faq-inner > ul li + li { margin-top: 0.3rem; }
+
+.faq-inner a { color: var(--accent); text-underline-offset: 2px; }
+
 .faq-inner details {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);

@@ -13,23 +13,23 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2241687723515076" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Team Generator — Lazy Cat Tools</title>
-  <meta name="description" content="Split players, students, or guests into random teams instantly. Free team picker — no sign-up required.">
-  <meta property="og:title" content="Random Team Generator — Lazy Cat Tools">
-  <meta property="og:description" content="Split any group into random teams instantly. Free, no sign-up.">
+  <title>Random Team Generator | Lazy Cat Tools</title>
+  <meta name="description" content="Split players, students or guests into random teams. Teams stay within one person of each other in size. Free, no sign-up.">
+  <meta property="og:title" content="Random Team Generator | Lazy Cat Tools">
+  <meta property="og:description" content="Split any group into random teams. Free, no sign-up.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lazycattools.com/tools/random-team-generator/">
   <meta property="og:image" content="https://lazycattools.com/assets/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Random Team Generator — Lazy Cat Tools">
-  <meta name="twitter:description" content="Split any group into random teams instantly. Free, no sign-up.">
+  <meta name="twitter:title" content="Random Team Generator | Lazy Cat Tools">
+  <meta name="twitter:description" content="Split any group into random teams. Free, no sign-up.">
   <meta name="twitter:image" content="https://lazycattools.com/assets/images/og-default.png">
   <link rel="canonical" href="https://lazycattools.com/tools/random-team-generator/">
   <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site.css?v=3">
+  <link rel="stylesheet" href="/assets/css/site.css?v=4">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -46,7 +46,7 @@
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Split any group into random, balanced teams instantly. Free browser tool — no sign-up required.",
+        "description": "Split any group into random teams that stay within one person of each other in size. Free browser tool, no sign-up required.",
         "provider": {
           "@type": "Organization",
           "name": "Lazy Cat Tools",
@@ -58,10 +58,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Does the random team generator work with uneven numbers?",
+            "name": "Does it work with uneven numbers?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. If your group doesn't divide evenly, the extra people are distributed one at a time across teams. You'll never get an empty team."
+              "text": "Yes. Extra people are added one per team, so some teams end up one person bigger. No team is ever empty."
             }
           },
           {
@@ -69,23 +69,31 @@
             "name": "How many teams can I make?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "You can split into 2–10 teams using the number selector. You'll need at least as many names as teams."
+              "text": "Anywhere from 2 to 10. You need at least as many names as teams."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I upload a list of names instead of typing them?",
+            "name": "Can I upload a list instead of typing?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes — use the Upload .txt or .csv button to load a file. Each name should be on its own line, or you can use a comma-separated format."
+              "text": "Yes. Use Upload .txt or .csv to load a file with one name per line or names separated by commas."
             }
           },
           {
             "@type": "Question",
-            "name": "Is the random team generator free?",
+            "name": "What are random team names?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Completely free, forever. No account, no sign-up, no limits."
+              "text": "Turn on Random team names to give each team a generated name instead of Team 1 and Team 2. It helps at trivia nights, and kids like having a team name to cheer for."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this tool free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. No account, no sign-up, and no limit on how many times you shuffle."
             }
           },
           {
@@ -93,7 +101,7 @@
             "name": "Who uses a random team generator?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Teachers splitting students into groups, coaches assigning players to sides, office managers running team-building activities, trivia hosts dividing tables, and anyone running a group game who wants a fair, unbiased split."
+              "text": "Teachers making groups, coaches picking sides for a scrimmage, trivia hosts splitting tables, and anyone running a game night who wants the teams to be fair."
             }
           }
         ]
@@ -126,14 +134,14 @@
 
     <div class="tool-header">
       <h1>Random Team Generator</h1>
-      <p>Split any group into balanced teams — instantly.</p>
+      <p>Split any group into even, random teams.</p>
     </div>
 
     <div class="tool-card">
       <section class="input-section" aria-label="Team setup">
 
         <div class="field-group">
-          <label for="names-input">Names <span class="hint">— one per line or comma-separated</span></label>
+          <label for="names-input">Names <span class="hint">(one per line or comma-separated)</span></label>
           <textarea
             id="names-input"
             rows="8"
@@ -205,45 +213,54 @@
   <section class="faq-section" aria-label="Frequently asked questions">
     <div class="faq-inner">
       <h2>How to Use the Random Team Generator</h2>
-      <p>Enter your list of names — one per line or comma-separated — choose how many teams you want, and hit <strong>Generate Teams</strong>. The tool splits your group randomly in seconds. Use <strong>Reshuffle</strong> to try a different arrangement, or <strong>Share Link</strong> to send the results to your group.</p>
+      <p>Enter your names, one per line or separated by commas, choose how many teams you want, and tap <strong>Generate Teams</strong>. <strong>Reshuffle</strong> gives you a new split, <strong>Share Link</strong> sends the same teams to your group, and <strong>Print</strong> gives you a paper copy for the gym wall or the classroom board.</p>
+
+      <h2>How uneven groups get split</h2>
+      <p>The tool shuffles the whole list, then deals the names out to the teams one at a time, like dealing cards. That keeps every team within one person of the others:</p>
+      <ul>
+        <li>10 people in 3 teams: 4, 3 and 3</li>
+        <li>23 people in 4 teams: 6, 6, 6 and 5</li>
+        <li>30 people in 7 teams: two teams of 5 and five teams of 4</li>
+      </ul>
+      <p>If you'd rather think in group sizes (say, groups of 4), divide your headcount by the size you want and round down to get the number of teams. 26 students in groups of 4 is 6 teams: four groups of 4 and two groups of 5.</p>
 
       <h2>Frequently Asked Questions</h2>
 
       <details open>
         <summary>Does it work with uneven numbers?</summary>
-        <p>Yes. If your group doesn't divide evenly, the extra people are distributed one at a time across teams. You'll never get an empty team.</p>
+        <p>Yes. Extra people are added one per team, so some teams end up one person bigger. No team is ever empty.</p>
       </details>
 
       <details>
         <summary>How many teams can I make?</summary>
-        <p>You can split into 2–10 teams using the number selector. You'll need at least as many names as teams.</p>
+        <p>Anywhere from 2 to 10. You need at least as many names as teams.</p>
       </details>
 
       <details>
         <summary>Can I upload a list instead of typing?</summary>
-        <p>Yes — use the <strong>Upload .txt or .csv</strong> button to load a file. Each name should be on its own line, or you can use a comma-separated format.</p>
+        <p>Yes. Use <strong>Upload .txt or .csv</strong> to load a file with one name per line or names separated by commas.</p>
       </details>
 
       <details>
         <summary>What are random team names?</summary>
-        <p>Toggle <strong>Random team names</strong> to give each team a generated name (like "Team Falcon") instead of Team 1, Team 2, etc. — useful for games, trivia nights, or any time you want a bit more personality.</p>
+        <p>Turn on <strong>Random team names</strong> to give each team a generated name instead of Team 1 and Team 2. It helps at trivia nights, and kids like having a team name to cheer for.</p>
       </details>
 
       <details>
         <summary>Is this tool free?</summary>
-        <p>Completely free, forever. No account, no sign-up, no limits.</p>
+        <p>Yes. No account, no sign-up, and no limit on how many times you shuffle.</p>
       </details>
 
       <details>
         <summary>Who uses a random team generator?</summary>
-        <p>Teachers splitting students into groups, coaches assigning players to sides, office managers running team-building activities, trivia hosts dividing tables, and anyone running a group game who wants a fair, unbiased split.</p>
+        <p>Teachers making groups, coaches picking sides for a scrimmage, trivia hosts splitting tables, and anyone running a game night who wants the teams to be fair.</p>
       </details>
     </div>
   </section>
 
   <div class="crosslink-banner">
     <span>Now pick who goes first →</span>
-    <a id="crosslink-pick" href="/tools/random-name-picker/" target="_blank" rel="noopener noreferrer">Random Name Picker</a>
+    <a id="crosslink-pick" href="/tools/random-name-picker/">Random Name Picker</a>
   </div>
 
   <!-- Ad Slot: Bottom Banner -->

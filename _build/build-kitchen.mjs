@@ -18,7 +18,7 @@ const require = createRequire(import.meta.url);
 const K = require(join(ROOT, 'assets/js/kitchen-converter.js'));
 const DATA = JSON.parse(readFileSync(join(ROOT, '_build/kitchen/ingredients.json'), 'utf8'));
 const SITE = 'https://lazycattools.com';
-const CSS_SITE = '/assets/css/site.css?v=3';
+const CSS_SITE = '/assets/css/site.css?v=4';
 const CSS_KITCHEN = '/assets/css/kitchen.css?v=3';
 const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=2';
 const JS_RECIPE = '/assets/js/recipe-tools.js?v=1';

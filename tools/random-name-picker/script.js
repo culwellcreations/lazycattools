@@ -181,7 +181,7 @@ function resetPool() {
   state.winner = null;
   elResults.hidden = true;
   elEmptyState.hidden = true;
-  showToast('Pool reset — all names back in');
+  showToast('Pool reset. All names are back in.');
 }
 
 // ─── File Upload ──────────────────────────────────────────────────────────────

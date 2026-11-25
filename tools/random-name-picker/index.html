@@ -13,23 +13,23 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2241687723515076" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Name Picker — Lazy Cat Tools</title>
-  <meta name="description" content="Pick a random name from your list instantly. Free random name picker — no sign-up required.">
-  <meta property="og:title" content="Random Name Picker — Lazy Cat Tools">
-  <meta property="og:description" content="Pick a random name from your list instantly. Free, no sign-up.">
+  <title>Random Name Picker | Lazy Cat Tools</title>
+  <meta name="description" content="Pick a random name from your list. Paste names or upload a file, draw one at a time, and remove each winner if you want. Free, no sign-up.">
+  <meta property="og:title" content="Random Name Picker | Lazy Cat Tools">
+  <meta property="og:description" content="Pick a random name from your list. Free, no sign-up.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lazycattools.com/tools/random-name-picker/">
   <meta property="og:image" content="https://lazycattools.com/assets/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Random Name Picker — Lazy Cat Tools">
-  <meta name="twitter:description" content="Pick a random name from your list instantly. Free, no sign-up.">
+  <meta name="twitter:title" content="Random Name Picker | Lazy Cat Tools">
+  <meta name="twitter:description" content="Pick a random name from your list. Free, no sign-up.">
   <meta name="twitter:image" content="https://lazycattools.com/assets/images/og-default.png">
   <link rel="canonical" href="https://lazycattools.com/tools/random-name-picker/">
   <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site.css?v=3">
+  <link rel="stylesheet" href="/assets/css/site.css?v=4">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -46,7 +46,7 @@
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Pick a random name from any list instantly. Free browser tool — no sign-up required.",
+        "description": "Pick a random name from any list. Free browser tool, no sign-up required.",
         "provider": {
           "@type": "Organization",
           "name": "Lazy Cat Tools",
@@ -58,10 +58,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Is the random name picker truly random?",
+            "name": "Is the draw truly random?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. The picker uses your browser's built-in random number generator to select a name — there's no weighting or bias toward any name on the list."
+              "text": "Yes. Each draw uses your browser's random number generator, and every entry on the list has the same chance. A name that appears twice has twice the chance, so remove duplicates if you don't want that."
             }
           },
           {
@@ -69,31 +69,39 @@
             "name": "Can I pick every person once without repeats?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Turn on Remove picked names and the tool will remove each winner from the pool as they're drawn. Once everyone has been picked, you'll see a prompt to reset and start over."
+              "text": "Turn on Remove picked names and each winner comes out of the pool as they're drawn. Once everyone has been picked, you'll see a prompt to reset and start over."
             }
           },
           {
             "@type": "Question",
-            "name": "How many names can I enter in the random name picker?",
+            "name": "How many names can I enter?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "There's no hard limit — you can paste in hundreds of names. The tool runs entirely in your browser, so performance stays fast regardless of list size."
+              "text": "There's no set limit. The tool runs in your browser, so a list of a few hundred names is no problem."
             }
           },
           {
             "@type": "Question",
-            "name": "What can I use a random name picker for?",
+            "name": "Can I upload a list from a file?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Classroom raffles, giveaway drawings, picking a volunteer, choosing who presents first, deciding who picks the movie, or any situation where you need a fair random selection from a list of people."
+              "text": "Yes. Tap Upload .txt or .csv and choose a file with one name per line or names separated by commas."
             }
           },
           {
             "@type": "Question",
-            "name": "Is the random name picker free?",
+            "name": "What can I use this for?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Completely free — no account, no sign-up, no limits."
+              "text": "Calling on students, raffle and giveaway winners, picking a volunteer, or deciding who chooses the movie. To split a group instead of picking one person, use the random team generator."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this tool free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. No account, no sign-up, and no limit on draws."
             }
           }
         ]
@@ -126,14 +134,14 @@
 
     <div class="tool-header">
       <h1>Random Name Picker</h1>
-      <p>Add your names, pick a winner — instantly.</p>
+      <p>Add your names and draw a winner.</p>
     </div>
 
     <div class="tool-card">
       <section class="input-section" aria-label="Name list setup">
 
         <div class="field-group">
-          <label for="names-input">Names <span class="hint">— one per line or comma-separated</span></label>
+          <label for="names-input">Names <span class="hint">(one per line or comma-separated)</span></label>
           <textarea
             id="names-input"
             rows="7"
@@ -152,7 +160,7 @@
 
         <label class="toggle-label">
           <input type="checkbox" id="remove-toggle">
-          <span>Remove picked names <span class="hint">— pick everyone once</span></span>
+          <span>Remove picked names <span class="hint">(pick everyone once)</span></span>
         </label>
 
         <button id="btn-pick" class="btn-primary">Pick a Name</button>
@@ -203,7 +211,7 @@
       </span>
       <div>
         <strong>Need to split into teams first?</strong>
-        <a href="/tools/random-team-generator/" target="_blank" rel="noopener noreferrer">Random Team Generator →</a>
+        <a href="/tools/random-team-generator/">Random Team Generator →</a>
       </div>
     </div>
 
@@ -217,38 +225,44 @@
   <section class="faq-section" aria-label="Frequently asked questions">
     <div class="faq-inner">
       <h2>How to Use the Random Name Picker</h2>
-      <p>Type or paste your names — one per line or comma-separated — then hit <strong>Pick a Name</strong>. The tool draws one name at random from your list. Enable <strong>Remove picked names</strong> to work through your entire list without repeats, or keep it off to allow the same name to be drawn multiple times.</p>
+      <p>Type or paste your names, one per line or separated by commas, then tap <strong>Pick a Name</strong>. Turn on <strong>Remove picked names</strong> to go through the whole list without repeats, or leave it off so every name stays in for every draw. <strong>Copy Name</strong> copies the winner and <strong>Share Link</strong> sends the result to someone else.</p>
+
+      <h2>Giving someone extra entries</h2>
+      <p>The picker counts every line, repeats included. If a giveaway gives one person three entries, put their name on the list three times and they get three times the chance. The flip side: when you paste a list from a spreadsheet, check for accidental duplicates, because a name that appears twice is twice as likely to win.</p>
+
+      <h2>Running a fair classroom or giveaway draw</h2>
+      <p>Project the page or share your screen before you pick, so everyone can see the full list going in. Turn on <strong>Remove picked names</strong> when you're setting an order, like who presents first, second and third. Leave it off for repeat prizes where the same person is allowed to win twice.</p>
 
       <h2>Frequently Asked Questions</h2>
 
       <details open>
         <summary>Is the draw truly random?</summary>
-        <p>Yes. The picker uses your browser's built-in random number generator to select a name — there's no weighting or bias toward any name on the list.</p>
+        <p>Yes. Each draw uses your browser's random number generator, and every entry on the list has the same chance. A name that appears twice has twice the chance, so remove duplicates if you don't want that.</p>
       </details>
 
       <details>
         <summary>Can I pick every person once without repeats?</summary>
-        <p>Turn on <strong>Remove picked names</strong> and the tool will remove each winner from the pool as they're drawn. Once everyone has been picked, you'll see a prompt to reset and start over.</p>
+        <p>Turn on <strong>Remove picked names</strong> and each winner comes out of the pool as they're drawn. Once everyone has been picked, you'll see a prompt to reset and start over.</p>
       </details>
 
       <details>
         <summary>How many names can I enter?</summary>
-        <p>There's no hard limit — you can paste in hundreds of names. The tool runs entirely in your browser, so performance stays fast regardless of list size.</p>
+        <p>There's no set limit. The tool runs in your browser, so a list of a few hundred names is no problem.</p>
       </details>
 
       <details>
         <summary>Can I upload a list from a file?</summary>
-        <p>Yes. Click <strong>Upload .txt or .csv</strong> to load a file. Names should be one per line, or comma-separated — both formats work.</p>
+        <p>Yes. Tap <strong>Upload .txt or .csv</strong> and choose a file with one name per line or names separated by commas.</p>
       </details>
 
       <details>
         <summary>What can I use this for?</summary>
-        <p>Classroom raffles, giveaway drawings, picking a volunteer, choosing who presents first, deciding who picks the movie, or any situation where you need a fair random selection from a list of people.</p>
+        <p>Calling on students, raffle and giveaway winners, picking a volunteer, or deciding who chooses the movie. To split a group instead of picking one person, use the <a href="/tools/random-team-generator/">random team generator</a>.</p>
       </details>
 
       <details>
         <summary>Is this tool free?</summary>
-        <p>Completely free — no account, no sign-up, no limits.</p>
+        <p>Yes. No account, no sign-up, and no limit on draws.</p>
       </details>
     </div>
   </section>

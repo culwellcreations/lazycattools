@@ -154,7 +154,7 @@ function copyResultsToClipboard(teams, labels) {
 
   navigator.clipboard.writeText(text)
     .then(() => showToast('Results copied!'))
-    .catch(() => showToast('Copy failed — try selecting the text manually'));
+    .catch(() => showToast('Copy failed. Try selecting the text manually.'));
 }
 
 function shareURL() {
