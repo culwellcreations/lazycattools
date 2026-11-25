@@ -30,6 +30,8 @@ ${AD}
         ${TOOLS.filter((t) => t.path !== path).map((t) => `<li><a href="${t.path}">${esc(t.name)}</a></li>`).join('\n        ')}
       </ul>
     </section>
+
+    ${h.guidesHtml}
   </main>
     ${scripts}
 ` + FOOT;

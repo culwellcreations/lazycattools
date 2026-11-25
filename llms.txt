@@ -63,6 +63,10 @@ Lazy Cat Tools (lazycattools.com) is a collection of lightweight, client-side ut
 - [1½ Cups in Grams](https://lazycattools.com/kitchen/1-and-a-half-cups-in-grams/)
 - [2 Cups in Grams](https://lazycattools.com/kitchen/2-cups-in-grams/)
 - [2½ Cups in Grams](https://lazycattools.com/kitchen/2-and-a-half-cups-in-grams/)
+- [Guides](https://lazycattools.com/guides/): Practical guides to measuring and converting recipes.
+- [How to Convert a Recipe From Cups to Grams](https://lazycattools.com/guides/convert-a-recipe-to-grams/): A step-by-step way to switch a favorite recipe from cups to grams: what to weigh, what to leave in spoons, and how to round.
+- [How to Measure Flour (and Why Your Cup Weighs More Than Mine)](https://lazycattools.com/guides/how-to-measure-flour/): Spoon and level, dip and sweep, or weigh it. How each method changes what a cup of flour weighs, and which one recipes expect.
+- [US Cups vs Metric Cups vs UK Cups, Explained](https://lazycattools.com/guides/us-vs-metric-cups/): A US cup is 236.6 ml, a metric cup is 250 ml, and an old UK cup is 284 ml. Which one your recipe means, and when the difference matters.
 <!-- kitchen:end -->
 
 ## Site Pages

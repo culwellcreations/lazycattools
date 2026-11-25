@@ -124,5 +124,17 @@ check(match('confectioners\' sugar').slug === 'powdered-sugar', "confectioners' 
 check(match('1 cup plain flour').slug === 'all-purpose-flour', 'plain flour');
 check(match('2 cups semisweet chocolate chips').slug === 'chocolate-chips', 'chocolate chips');
 
+// 8. Guides.
+const { loadGuides } = await import(join(ROOT, '_build/guides.mjs'));
+for (const gd of loadGuides(ROOT)) {
+  const html = page(gd.path.slice(1, -1));
+  check(html.includes('"@type": "Article"'), `${gd.slug}: Article schema`);
+  check(gd.words >= 600, `${gd.slug}: at least 600 words (has ${gd.words})`);
+  check((gd.body.match(/—/g) || []).length <= 2, `${gd.slug}: at most 2 em dashes`);
+  check(!/not just|it's not about|delve|crucial|testament|landscape|seamless/i.test(gd.body), `${gd.slug}: no flagged AI phrasing`);
+  for (const m of gd.body.matchAll(/\]\((\/[^)]*)\)/g)) check(existsSync(join(ROOT, m[1], 'index.html')), `${gd.slug}: link ${m[1]} exists`);
+  for (const r of gd.related) check(existsSync(join(ROOT, r.href, 'index.html')), `${gd.slug}: related ${r.href} exists`);
+}
+
 console.log(`${passes} passed, ${fails} failed`);
 process.exit(fails ? 1 : 0);

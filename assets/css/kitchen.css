@@ -412,3 +412,25 @@
   .conv-row-3 { grid-template-columns: 1fr 1fr; }
   .conv-row-3 .conv-field:first-child { grid-column: 1 / -1; }
 }
+
+/* ── Guides ────────────────────────────────────────────────────────────── */
+
+.byline { margin-top: 0.5rem; font-size: 0.85rem; color: var(--stone); }
+.byline a { color: var(--stone); text-underline-offset: 2px; }
+
+.guide-body { margin-top: 1.75rem; }
+.guide-body p { font-size: 1.025rem; line-height: 1.75; color: #3D3C38; }
+.guide-body h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin: 2.25rem 0 0.6rem;
+  scroll-margin-top: 1rem;
+}
+.guide-body h3 { font-size: 1.075rem; font-weight: 700; margin: 1.5rem 0 0.4rem; }
+.guide-body ol,
+.guide-body ul { margin: 0 0 1rem 1.25rem; max-width: 66ch; }
+.guide-body li { font-size: 1.025rem; line-height: 1.7; color: #3D3C38; margin-bottom: 0.35rem; padding-left: 0.2rem; }
+.guide-body li::marker { color: var(--accent); font-weight: 700; }
+.guide-body .chart-wrap { margin: 0.5rem 0 1.25rem; }
+.guide-body strong { color: var(--ink); }
