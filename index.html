@@ -56,6 +56,48 @@
       font-size: 1rem;
     }
 
+    .section-intro {
+      max-width: 60ch;
+      color: var(--stone);
+      font-size: 0.95rem;
+      margin: -0.4rem 0 1.25rem;
+    }
+
+    .about-tools {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-tools h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem 2rem;
+    }
+
+    .about-tools h3 {
+      font-size: 0.975rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-tools p {
+      font-size: 0.9rem;
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    .about-tools-more { margin-top: 1.75rem; }
+
+    .about-tools a { color: var(--accent); text-underline-offset: 2px; }
+
     .tools-section h2 {
       font-size: 0.75rem;
       font-weight: 600;
@@ -143,6 +185,11 @@
         <img class="site-logo-icon" src="/assets/images/lazy cat.svg" alt="" aria-hidden="true">
         <span class="site-logo-text">Lazy Cat Tools</span>
       </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="/#tools">Tools</a>
+        <a href="/pages/about/">About</a>
+        <a href="/pages/contact/">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -158,11 +205,12 @@
         Free forever · No sign-up
       </div>
       <h1>Free Online Tools — No Sign-Up Required</h1>
-      <p>Free browser tools that do what they say.</p>
+      <p>Free browser tools that do what they say. Open one, get your answer, close the tab.</p>
     </div>
 
-    <section class="tools-section" aria-label="Available tools">
-      <h2>Tools</h2>
+    <section class="tools-section" id="tools" aria-labelledby="randomizers-heading">
+      <h2 id="randomizers-heading">Randomizers</h2>
+      <p class="section-intro">For when someone has to be picked and nobody wants to be the one picking. Teachers use these for groups and callouts, coaches for scrimmages, and hosts for raffles and game night.</p>
       <div class="tools-grid">
 
         <a href="/tools/random-team-generator/" class="tool-card-link">
@@ -182,7 +230,7 @@
 
         <a href="/tools/random-name-picker/" class="tool-card-link">
           <div class="tool-card-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
           </div>
           <h3>Random Name Picker</h3>
           <p>Draw a random winner from any list of names.</p>
@@ -197,7 +245,7 @@
 
         <a href="/tools/coin-flip/" class="tool-card-link">
           <div class="tool-card-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/></svg>
           </div>
           <h3>Coin Flip</h3>
           <p>Flip a virtual coin — heads or tails, instantly.</p>
@@ -212,6 +260,25 @@
 
       </div>
     </section>
+
+    <section class="about-tools" aria-labelledby="how-heading">
+      <h2 id="how-heading">How these tools work</h2>
+      <div class="about-tools-grid">
+        <div>
+          <h3>Everything runs in your browser</h3>
+          <p>Names, lists and anything else you type stay on your device. The tools are plain JavaScript that runs on the page, so nothing you enter is sent to a server or saved after you leave.</p>
+        </div>
+        <div>
+          <h3>Fair randomness</h3>
+          <p>Every name, team slot and coin side has the same chance. Teams are built with a standard Fisher–Yates shuffle and names are drawn evenly from the whole list, so where someone sits in the list doesn't matter. No weighting, no hidden favorites.</p>
+        </div>
+        <div>
+          <h3>Free, with ads</h3>
+          <p>There are no accounts, trials or paid tiers. The site is paid for by a few ads, kept below the tools so they never get between you and the answer.</p>
+        </div>
+      </div>
+      <p class="about-tools-more">Missing a tool you need? <a href="/pages/contact/">Suggest one</a>. More are added regularly, starting with kitchen and baking converters.</p>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -220,9 +287,11 @@
     </div>
     <div class="site-footer-inner">
       <p>© 2026 Lazy Cat Tools</p>
-      <nav class="footer-nav" aria-label="Footer navigation">
+            <nav class="footer-nav" aria-label="Footer navigation">
         <a href="/pages/about/">About</a>
+        <a href="/pages/contact/">Contact</a>
         <a href="/pages/privacy/">Privacy</a>
+        <a href="/pages/terms/">Terms</a>
         <a href="https://buymeacoffee.com/culwellcreations" target="_blank" rel="noopener noreferrer">Buy me a Diet Coke</a>
       </nav>
     </div>

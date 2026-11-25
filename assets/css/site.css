@@ -108,6 +108,41 @@ body {
   border-radius: var(--radius-sm);
 }
 
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.site-nav a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--stone);
+  text-decoration: none;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.site-nav a:hover { color: var(--ink); background: var(--bg); }
+
+.site-nav a[aria-current="page"] { color: var(--accent); }
+
+.site-nav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+  .site-header { padding: 0 1rem; }
+  .site-nav { gap: 0; }
+  .site-nav a { padding: 0.5rem 0.45rem; font-size: 0.85rem; }
+  .site-logo-text { font-size: 0.95rem; }
+}
+
+::selection { background: var(--warm-bg); color: var(--ink); }
+
 /* ── Ad Slots ─────────────────────────────────────────────────────────────── */
 
 .ad-slot {
@@ -130,8 +165,14 @@ body {
 }
 
 .ad-slot::after { content: 'Ad'; pointer-events: none; }
-.ad-top    { margin-top: 1.25rem; margin-bottom: 1.25rem; }
-.ad-bottom { margin-top: 1.25rem; margin-bottom: 1.25rem; }
+.ad-top, .ad-mid, .ad-bottom { margin-top: 1.25rem; margin-bottom: 1.25rem; }
+
+/* Empty placeholders look unfinished to AdSense reviewers. Slots stay hidden
+   until real ad code is inside them: add class "ad-live" to a slot when you
+   paste an AdSense unit into it, and it will show at its reserved height. */
+.ad-slot:not(.ad-live) { display: none; }
+.ad-slot.ad-live { background: none; border: 0; padding: 0; }
+.ad-slot.ad-live::after { content: none; }
 
 @media (max-width: 540px) { .ad-slot { min-height: 50px; } }
 
@@ -162,7 +203,13 @@ body {
 
 .site-footer-inner p { font-size: 0.8rem; color: var(--stone); }
 
-.footer-nav { display: flex; gap: 1.25rem; align-items: center; }
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+  align-items: center;
+}
 
 .footer-nav a {
   font-size: 0.8rem;

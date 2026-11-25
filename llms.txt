@@ -16,7 +16,9 @@ Lazy Cat Tools (lazycattools.com) is a collection of lightweight, client-side ut
 
 - [Home](https://lazycattools.com/): Tool directory listing all available tools.
 - [About](https://lazycattools.com/pages/about/): Background on the site and its philosophy.
-- [Privacy Policy](https://lazycattools.com/pages/privacy/): No personal data is collected. Tools run client-side only.
+- [Contact](https://lazycattools.com/pages/contact/): Email for bug reports, corrections, and tool requests.
+- [Privacy Policy](https://lazycattools.com/pages/privacy/): Tools run client-side; nothing typed into a tool is sent to a server. Google Analytics and AdSense cookies are explained.
+- [Terms of Use](https://lazycattools.com/pages/terms/): Free to use; results provided as-is.
 
 ## About This Site
 
