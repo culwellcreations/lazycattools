@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site.css?v=2">
+  <link rel="stylesheet" href="/assets/css/site.css?v=3">
   <style>
     .home-main {
       width: 100%;
@@ -62,6 +62,8 @@
       font-size: 0.95rem;
       margin: -0.4rem 0 1.25rem;
     }
+
+    .kitchen-section { margin-top: 2.75rem; }
 
     .about-tools {
       margin-top: 3.5rem;
@@ -187,6 +189,7 @@
       </a>
       <nav class="site-nav" aria-label="Main">
         <a href="/#tools">Tools</a>
+        <a href="/kitchen/">Kitchen</a>
         <a href="/pages/about/">About</a>
         <a href="/pages/contact/">Contact</a>
       </nav>
@@ -261,6 +264,44 @@
       </div>
     </section>
 
+    <section class="tools-section kitchen-section" aria-labelledby="kitchen-heading">
+      <h2 id="kitchen-heading">Kitchen</h2>
+      <p class="section-intro">Baking conversions that use the weight of the actual ingredient, because a cup of flour and a cup of sugar don't weigh the same.</p>
+      <div class="tools-grid">
+
+        <a href="/kitchen/cups-to-grams/" class="tool-card-link">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.7h-7a2 2 0 0 1-2-1.7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+          </div>
+          <h3>Cups to Grams Converter</h3>
+          <p>Cups, spoons, grams and ounces for 22 baking ingredients.</p>
+          <div class="tool-card-footer">
+            <span class="tool-card-tag">Free</span>
+            <svg class="tool-card-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="/kitchen/" class="tool-card-link">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+          </div>
+          <h3>Ingredient Charts</h3>
+          <p>Flour, sugar, butter and more, from ⅛ cup to 3 cups.</p>
+          <div class="tool-card-footer">
+            <span class="tool-card-tag">Free</span>
+            <svg class="tool-card-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
     <section class="about-tools" aria-labelledby="how-heading">
       <h2 id="how-heading">How these tools work</h2>
       <div class="about-tools-grid">
@@ -277,7 +318,7 @@
           <p>There are no accounts, trials or paid tiers. The site is paid for by a few ads, kept below the tools so they never get between you and the answer.</p>
         </div>
       </div>
-      <p class="about-tools-more">Missing a tool you need? <a href="/pages/contact/">Suggest one</a>. More are added regularly, starting with kitchen and baking converters.</p>
+      <p class="about-tools-more">Missing a tool you need? <a href="/pages/contact/">Suggest one</a>. New tools are added regularly.</p>
     </section>
   </main>
 

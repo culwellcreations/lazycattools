@@ -134,10 +134,14 @@ body {
   outline-offset: 2px;
 }
 
-@media (max-width: 420px) {
-  .site-header { padding: 0 1rem; }
+.site-logo-text { white-space: nowrap; }
+
+@media (max-width: 440px) {
+  .site-header { padding: 0 0.75rem 0 1rem; }
   .site-nav { gap: 0; }
   .site-nav a { padding: 0.5rem 0.45rem; font-size: 0.85rem; }
+  /* The logo already goes home, so the "Tools" link is the one to drop. */
+  .site-nav a[href="/#tools"] { display: none; }
   .site-logo-text { font-size: 0.95rem; }
 }
 
