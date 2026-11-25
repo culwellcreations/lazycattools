@@ -31,6 +31,31 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://lazycattools.com/kitchen/cups-tablespoons-teaspoons/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lazycattools.com/kitchen/butter-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lazycattools.com/kitchen/oven-temperature/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lazycattools.com/kitchen/recipe-scaler/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lazycattools.com/kitchen/recipe-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://lazycattools.com/kitchen/all-purpose-flour-cups-to-grams/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -137,6 +162,11 @@
   </url>
   <url>
     <loc>https://lazycattools.com/kitchen/honey-cups-to-grams/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lazycattools.com/kitchen/chocolate-chips-cups-to-grams/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -19,7 +19,7 @@
     },
     {
       "id": "grains",
-      "name": "Rice, oats & cocoa"
+      "name": "Rice, oats, cocoa & chocolate"
     },
     {
       "id": "leaveners",
@@ -44,7 +44,15 @@
       "faq": {
         "q": "Is a cup of flour 120 g or 125 g?",
         "a": "Both numbers are in common use. 120 g comes from spooning flour into the cup and leveling it, which is how King Arthur Baking and most recipe writers measure. USDA data lists 125 g. The 5 g difference won't ruin a recipe; scooping straight from the bag, which can add 20 g or more per cup, will."
-      }
+      },
+      "aliases": [
+        "all-purpose flour",
+        "all purpose flour",
+        "ap flour",
+        "plain flour",
+        "white flour",
+        "flour"
+      ]
     },
     {
       "slug": "granulated-sugar",
@@ -64,7 +72,15 @@
       "faq": {
         "q": "How many grams of sugar are in 1 cup?",
         "a": "One US cup of granulated white sugar weighs about 200 g (7.1 oz). Half a cup is 100 g and a quarter cup is 50 g, which makes sugar one of the easiest ingredients to convert in your head."
-      }
+      },
+      "aliases": [
+        "granulated sugar",
+        "white sugar",
+        "caster sugar",
+        "superfine sugar",
+        "cane sugar",
+        "sugar"
+      ]
     },
     {
       "slug": "butter",
@@ -93,7 +109,12 @@
       "faq": {
         "q": "How many grams is one stick of butter?",
         "a": "One US stick of butter is 113 g (4 oz), which is ½ cup or 8 tablespoons. Two sticks make 1 cup (227 g) and four sticks make a pound (454 g)."
-      }
+      },
+      "aliases": [
+        "unsalted butter",
+        "salted butter",
+        "butter"
+      ]
     },
     {
       "slug": "brown-sugar",
@@ -112,7 +133,12 @@
       "faq": {
         "q": "Does packed brown sugar weigh more than loose?",
         "a": "Yes, a lot more. A firmly packed cup of brown sugar weighs about 213 g, while a loosely filled cup can weigh under 150 g. Recipes that list brown sugar by the cup almost always mean packed."
-      }
+      },
+      "aliases": [
+        "light brown sugar",
+        "dark brown sugar",
+        "brown sugar"
+      ]
     },
     {
       "slug": "powdered-sugar",
@@ -131,7 +157,13 @@
       "faq": {
         "q": "Is icing sugar the same as powdered sugar?",
         "a": "Yes. Powdered sugar, confectioners' sugar and icing sugar are the same thing: finely ground sugar, usually with a little cornstarch to stop it clumping. A cup weighs about 113 g unsifted."
-      }
+      },
+      "aliases": [
+        "powdered sugar",
+        "confectioners' sugar",
+        "confectioners sugar",
+        "icing sugar"
+      ]
     },
     {
       "slug": "water",
@@ -150,7 +182,10 @@
       "faq": {
         "q": "Is 1 cup of water 8 oz?",
         "a": "It's 8 fluid ounces, which is volume. By weight, a US cup of water is about 237 g, or 8.3 oz. The two only line up approximately because a fluid ounce of water weighs a little more than a weight ounce."
-      }
+      },
+      "aliases": [
+        "water"
+      ]
     },
     {
       "slug": "peanut-butter",
@@ -169,7 +204,10 @@
       "faq": {
         "q": "How many grams is 2 tablespoons of peanut butter?",
         "a": "About 32 g. That's the standard serving size printed on US peanut butter labels, and it works out to 256 g per cup."
-      }
+      },
+      "aliases": [
+        "peanut butter"
+      ]
     },
     {
       "slug": "white-rice",
@@ -188,7 +226,14 @@
       "faq": {
         "q": "How much cooked rice does 1 cup of uncooked rice make?",
         "a": "About 3 cups. One cup (185 g) of dry long-grain white rice absorbs water as it cooks and ends up around 3 cups, or roughly 475 g."
-      }
+      },
+      "aliases": [
+        "uncooked rice",
+        "long-grain rice",
+        "long grain rice",
+        "white rice",
+        "rice"
+      ]
     },
     {
       "slug": "cooked-rice",
@@ -207,7 +252,10 @@
       "faq": {
         "q": "How many grams is a serving of cooked rice?",
         "a": "A common serving is ½ cup of cooked rice, about 79 g, or 1 cup at about 158 g. Nutrition labels on rice bags usually list the dry weight instead, so check which one you're reading."
-      }
+      },
+      "aliases": [
+        "cooked rice"
+      ]
     },
     {
       "slug": "bread-flour",
@@ -226,7 +274,12 @@
       "faq": {
         "q": "Can I swap bread flour and all-purpose flour by weight?",
         "a": "Yes, gram for gram. Both weigh about 120 g per cup. Bread flour gives a chewier result because of its higher protein, and dough made with it may need a spoonful or two more water."
-      }
+      },
+      "aliases": [
+        "bread flour",
+        "strong flour",
+        "strong white flour"
+      ]
     },
     {
       "slug": "cocoa-powder",
@@ -246,7 +299,12 @@
       "faq": {
         "q": "How many grams is 1 tablespoon of cocoa powder?",
         "a": "About 5 g. A cup of cocoa powder is roughly 84 g, and there are 16 tablespoons in a cup."
-      }
+      },
+      "aliases": [
+        "unsweetened cocoa powder",
+        "cocoa powder",
+        "cocoa"
+      ]
     },
     {
       "slug": "rolled-oats",
@@ -265,7 +323,14 @@
       "faq": {
         "q": "Do quick oats and rolled oats weigh the same?",
         "a": "Not quite. Rolled oats weigh about 80 g per cup. Quick oats are cut finer and pack more closely, so a cup is closer to 85–90 g. By weight they can be swapped one for one."
-      }
+      },
+      "aliases": [
+        "old-fashioned oats",
+        "old fashioned oats",
+        "rolled oats",
+        "quick oats",
+        "oats"
+      ]
     },
     {
       "slug": "milk",
@@ -284,7 +349,13 @@
       "faq": {
         "q": "Does milk weigh the same as water?",
         "a": "Almost. A cup of milk weighs about 244 g, a little more than the 237 g of a cup of water. In most recipes the difference doesn't matter."
-      }
+      },
+      "aliases": [
+        "whole milk",
+        "skim milk",
+        "2% milk",
+        "milk"
+      ]
     },
     {
       "slug": "vegetable-oil",
@@ -303,7 +374,15 @@
       "faq": {
         "q": "Is 1 cup of oil heavier or lighter than 1 cup of water?",
         "a": "Lighter. A cup of vegetable oil weighs about 218 g and a cup of water about 237 g, because oil is less dense than water."
-      }
+      },
+      "aliases": [
+        "vegetable oil",
+        "canola oil",
+        "olive oil",
+        "sunflower oil",
+        "neutral oil",
+        "oil"
+      ]
     },
     {
       "slug": "sour-cream",
@@ -322,7 +401,10 @@
       "faq": {
         "q": "Can I substitute yogurt for sour cream by weight?",
         "a": "Yes. Plain yogurt and sour cream weigh nearly the same per cup (around 230 g), so they swap gram for gram. Greek yogurt is the closest match in thickness."
-      }
+      },
+      "aliases": [
+        "sour cream"
+      ]
     },
     {
       "slug": "baking-powder",
@@ -342,7 +424,10 @@
       "faq": {
         "q": "How many teaspoons of baking powder is 5 g?",
         "a": "A little over 1 teaspoon. One level teaspoon of baking powder weighs about 4.6 g, so 5 g is roughly 1 and 1/8 teaspoons."
-      }
+      },
+      "aliases": [
+        "baking powder"
+      ]
     },
     {
       "slug": "baking-soda",
@@ -363,7 +448,12 @@
       "faq": {
         "q": "Is baking soda heavier than baking powder?",
         "a": "Slightly. A level teaspoon of baking soda weighs about 4.8 g and baking powder about 4.6 g. They are not interchangeable, though: baking soda is roughly four times as strong."
-      }
+      },
+      "aliases": [
+        "baking soda",
+        "bicarbonate of soda",
+        "bicarb"
+      ]
     },
     {
       "slug": "salt",
@@ -383,7 +473,12 @@
       "faq": {
         "q": "How many grams is a teaspoon of kosher salt?",
         "a": "It depends on the brand. Diamond Crystal kosher salt is about 2.8 g per teaspoon and Morton kosher salt about 4.8 g. Fine table salt is about 6 g, more than twice as salty by volume as Diamond Crystal."
-      }
+      },
+      "aliases": [
+        "table salt",
+        "fine salt",
+        "salt"
+      ]
     },
     {
       "slug": "cake-flour",
@@ -402,7 +497,10 @@
       "faq": {
         "q": "How do I make cake flour from all-purpose flour?",
         "a": "For each cup, measure 1 cup of all-purpose flour, remove 2 tablespoons, and add 2 tablespoons of cornstarch. By weight, that's about 105 g of flour and 16 g of cornstarch. Sift them together two or three times."
-      }
+      },
+      "aliases": [
+        "cake flour"
+      ]
     },
     {
       "slug": "almond-flour",
@@ -421,7 +519,12 @@
       "faq": {
         "q": "Can I replace all-purpose flour with almond flour?",
         "a": "Not cup for cup. Almond flour has no gluten and a lot more fat, so cakes and breads made with a straight swap come out dense and crumbly. Use recipes written for almond flour, and measure it by weight (about 112 g per cup)."
-      }
+      },
+      "aliases": [
+        "almond flour",
+        "almond meal",
+        "ground almonds"
+      ]
     },
     {
       "slug": "whole-wheat-flour",
@@ -440,7 +543,13 @@
       "faq": {
         "q": "Is whole wheat flour heavier than white flour?",
         "a": "Not really by the cup. Both weigh about 120 g spooned and leveled. Whole wheat absorbs more water, though, so doughs made with it often need a little more liquid."
-      }
+      },
+      "aliases": [
+        "whole wheat flour",
+        "wholewheat flour",
+        "whole-wheat flour",
+        "wholemeal flour"
+      ]
     },
     {
       "slug": "honey",
@@ -460,7 +569,38 @@
       "faq": {
         "q": "How many grams is 1 tablespoon of honey?",
         "a": "About 21 g. A cup of honey weighs roughly 340 g, and there are 16 tablespoons in a cup."
-      }
+      },
+      "aliases": [
+        "honey"
+      ]
+    },
+    {
+      "slug": "chocolate-chips",
+      "name": "Chocolate Chips",
+      "lower": "chocolate chips",
+      "family": "grains",
+      "tier": 2,
+      "mode": "cup",
+      "gpc": 170,
+      "measured": "standard-size chips, scooped and leveled",
+      "source": "King Arthur Baking ingredient weight chart (170 g per cup)",
+      "body": [
+        "A cup of standard semisweet chocolate chips weighs about 170 g, which is why a 12 oz bag holds roughly 2 cups. Mini chips pack more tightly and weigh a little more per cup; chunks and wafers have more air between them and weigh less, sometimes closer to 150 g.",
+        "Chocolate is one of the few ingredients where a cup measurement is usually close enough, because a few grams more or less only changes how chocolatey each bite is. Weighing still helps when you're swapping chips for a chopped bar: weigh the bar to match the chips, since chopped chocolate fills a cup unevenly."
+      ],
+      "faq": {
+        "q": "How many cups of chocolate chips are in a 12 oz bag?",
+        "a": "About 2 cups. A 12 oz bag holds 340 g, and a cup of standard chocolate chips weighs about 170 g."
+      },
+      "aliases": [
+        "semisweet chocolate chips",
+        "semi-sweet chocolate chips",
+        "milk chocolate chips",
+        "dark chocolate chips",
+        "chocolate chips",
+        "chocolate chunks",
+        "choc chips"
+      ]
     }
   ],
   "amounts": {

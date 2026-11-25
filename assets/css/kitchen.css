@@ -297,3 +297,118 @@
   .converter { padding: 1rem; }
   .chart th, .chart td { padding: 0.55rem 0.65rem; }
 }
+
+/* ── Phase 3 tools: result rows, recipe box, controls ──────────────────── */
+
+.result-rows {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.925rem;
+  font-variant-numeric: tabular-nums;
+}
+.result-rows:empty { display: none; }
+.result-rows dt { color: var(--stone); }
+.result-rows dd { font-weight: 700; color: var(--ink); text-align: right; }
+
+.conv-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.converter textarea {
+  width: 100%;
+  min-height: 190px;
+  padding: 0.75rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+.converter textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(55, 48, 163, 0.14);
+}
+.conv-field .hint { font-weight: 400; color: var(--stone); font-size: 0.8rem; }
+
+.recipe-actions { display: flex; justify-content: flex-end; margin-top: 0.4rem; }
+
+.btn-ghost {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.8rem;
+  min-height: 40px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.btn-ghost:hover { border-color: var(--accent); background: var(--bg); }
+.btn-ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.scale-controls { border: 0; display: grid; gap: 0.75rem; min-width: 0; }
+.scale-controls legend { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+
+.seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.seg button,
+.seg label {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.95rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+.seg button[aria-pressed="true"],
+.seg label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
+.seg button:focus-visible,
+.seg label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.seg-radio input { accent-color: #fff; margin: 0; }
+
+.check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--ink); cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+.recipe-result { border-top: 1px solid var(--border); padding-top: 1rem; }
+.recipe-result-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.recipe-result-head h2 { font-size: 1rem; font-weight: 800; margin-right: auto; }
+.copy-status { font-size: 0.8rem; color: var(--stone); }
+.recipe-empty { color: var(--stone); font-size: 0.925rem; }
+
+.recipe-out { list-style: none; display: grid; gap: 0.15rem; }
+.recipe-out li {
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.975rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.recipe-out li.r-converted span,
+.recipe-out li.r-scaled span { font-weight: 600; }
+.recipe-out li.r-unchanged { color: var(--stone); }
+.recipe-out li.r-unmatched { background: var(--warm-bg); }
+.recipe-out li small { display: block; font-size: 0.78rem; color: var(--warm-text); }
+
+.tool-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
+.tool-list .tool-feature { margin-top: 0; }
+
+@media (max-width: 420px) {
+  .conv-row-3 { grid-template-columns: 1fr 1fr; }
+  .conv-row-3 .conv-field:first-child { grid-column: 1 / -1; }
+}

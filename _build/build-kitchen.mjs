@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, readdirSync
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildToolPages } from './tool-pages.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -17,8 +18,9 @@ const K = require(join(ROOT, 'assets/js/kitchen-converter.js'));
 const DATA = JSON.parse(readFileSync(join(ROOT, '_build/kitchen/ingredients.json'), 'utf8'));
 const SITE = 'https://lazycattools.com';
 const CSS_SITE = '/assets/css/site.css?v=3';
-const CSS_KITCHEN = '/assets/css/kitchen.css?v=1';
-const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=1';
+const CSS_KITCHEN = '/assets/css/kitchen.css?v=2';
+const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=2';
+const JS_RECIPE = '/assets/js/recipe-tools.js?v=1';
 
 const ING = DATA.ingredients;
 const FAM = Object.fromEntries(DATA.families.map((f) => [f.id, f]));
@@ -507,11 +509,27 @@ ${AD}
     </section>
 
     ${faqHtml(faqs)}
+
+    <section class="k-section" aria-labelledby="more-h">
+      <h2 id="more-h">More kitchen tools</h2>
+      <ul class="link-grid">
+        ${TOOL_BLURBS.slice(1).map((t) => `<li><a href="${t[0]}">${esc(t[1])}</a></li>`).join('\n        ')}
+      </ul>
+    </section>
   </main>
 ` + FOOT;
   write(path, html);
   generated.push(path);
 }
+
+const TOOL_BLURBS = [
+  ['/kitchen/cups-to-grams/', 'Cups to Grams Converter', `Cups, spoons, grams and ounces for ${ING.length} ingredients, both directions.`],
+  ['/kitchen/recipe-converter/', 'Recipe Converter', 'Paste a whole recipe and convert every line to grams, or back to cups.'],
+  ['/kitchen/recipe-scaler/', 'Recipe Scaler', 'Halve, double or resize a recipe by servings, in real kitchen measures.'],
+  ['/kitchen/cups-tablespoons-teaspoons/', 'Cups, Tablespoons & Teaspoons', '1 cup = 16 tbsp = 48 tsp, plus fluid ounces and ml.'],
+  ['/kitchen/butter-converter/', 'Butter Converter', 'Sticks to cups, tablespoons and grams, and European blocks to sticks.'],
+  ['/kitchen/oven-temperature/', 'Oven Temperature Converter', '°F, °C and gas mark, with fan oven settings.'],
+];
 
 // ── hub ──────────────────────────────────────────────────────────────────────
 function hubPage() {
@@ -538,10 +556,12 @@ function hubPage() {
     <h1>Kitchen &amp; Baking Converters</h1>
     <p class="answer">Convert recipes between cups and grams using the weight of the ingredient you're actually measuring, not a one-size-fits-all number. Free, and everything runs in your browser.</p>
 
-    <a class="tool-feature" href="/kitchen/cups-to-grams/">
-      <strong>Cups to Grams Converter</strong>
-      <span>Cups, tablespoons, teaspoons, grams and ounces for ${ING.length} ingredients, both directions.</span>
-    </a>
+    <section class="k-section" aria-labelledby="tools-h" style="margin-top:1.5rem">
+      <h2 id="tools-h">Converters</h2>
+      <div class="tool-list">
+        ${TOOL_BLURBS.map((t) => `<a class="tool-feature" href="${t[0]}"><strong>${esc(t[1])}</strong><span>${esc(t[2])}</span></a>`).join('\n        ')}
+      </div>
+    </section>
 
     <section class="k-section" aria-labelledby="ing-h">
       <h2 id="ing-h">Ingredient charts</h2>
@@ -584,7 +604,7 @@ function sitemap() {
     ['/tools/coin-flip/', 'monthly', '0.9'],
   ];
   const pages = [['/pages/about/', 'yearly', '0.3'], ['/pages/privacy/', 'yearly', '0.3'], ['/pages/contact/', 'yearly', '0.3'], ['/pages/terms/', 'yearly', '0.3']];
-  const kitchen = generated.map((p) => [p, 'monthly', p === '/kitchen/' || p === '/kitchen/cups-to-grams/' ? '0.9' : '0.7']);
+  const kitchen = generated.map((p) => [p, 'monthly', (p === '/kitchen/' || TOOL_BLURBS.some((t) => t[0] === p)) ? '0.9' : '0.7']);
   const all = [...fixed, ...kitchen, ...pages];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -605,6 +625,7 @@ function llms() {
 ## Kitchen
 
 - [Kitchen & Baking Converters](${SITE}/kitchen/): Hub for all kitchen tools and ingredient charts.
+${TOOL_BLURBS.slice(1).map((t) => `- [${t[1]}](${SITE}${t[0]}): ${t[2]}`).join('\n')}
 - [Cups to Grams Converter](${SITE}/kitchen/cups-to-grams/): Convert cups, tablespoons, teaspoons, grams and ounces for ${ING.length} baking ingredients, using ingredient-specific weights (e.g. 1 cup all-purpose flour = 120 g, spooned and leveled).
 ${ING.map((i) => `- [${ingTitle(i)}](${SITE}${ingUrl(i)}): ${i.mode === 'spoon' ? `1 teaspoon = ${g(i.gpc / 48)}` : `1 cup = ${g(i.gpc)}`} (${i.measured}).`).join('\n')}
 ${DATA.amounts.grams.map((a) => `- [${a.g} Grams to Cups](${SITE}${gramsUrl(a)})`).join('\n')}
@@ -630,6 +651,7 @@ if (existsSync(kitchenDir)) {
 
 hubPage();
 converterPage();
+buildToolPages({ K, ING, esc, g, oz, head, FOOT, AD, crumbs, crumbsLd, faqHtml, faqLd, appLd, write, generated, ingUrl, JS_KITCHEN, JS_RECIPE });
 ING.forEach(ingredientPage);
 DATA.amounts.grams.forEach(gramsPage);
 DATA.amounts.cups.forEach(cupsPage);

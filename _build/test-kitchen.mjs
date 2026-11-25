@@ -69,7 +69,60 @@ for (const bad of ['', 'abc', '1 2', '1/0', '-']) check(Number.isNaN(K.parseAmou
 const sm = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
 const urls = [...sm.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 check(new Set(urls).size === urls.length, 'sitemap has no duplicates');
-check(urls.filter((u) => u.includes('/kitchen/')).length === 2 + DATA.ingredients.length + DATA.amounts.grams.length + DATA.amounts.cups.length, 'sitemap kitchen count');
+check(urls.filter((u) => u.includes('/kitchen/')).length === 7 + DATA.ingredients.length + DATA.amounts.grams.length + DATA.amounts.cups.length, 'sitemap kitchen count');
+
+// 6. Phase 3 tool pages and their charts.
+const R = require(join(ROOT, 'assets/js/recipe-tools.js'));
+const spoons = page('kitchen/cups-tablespoons-teaspoons');
+check(/<tr id="1-3-cup"><th scope="row">⅓ cup<\/th><td class="num-main">5 tbsp \+ 1 tsp</.test(spoons), 'spoons: ⅓ cup = 5 tbsp + 1 tsp');
+check(/<tr id="1-2-cup"><th scope="row">½ cup<\/th><td class="num-main">8 tbsp<\/td><td>24</.test(spoons), 'spoons: ½ cup = 8 tbsp = 24 tsp');
+const butterTool = page('kitchen/butter-converter');
+check(/<tr id="1-stick"><th scope="row">1 stick<\/th><td class="num-main">113 g</.test(butterTool), 'butter: 1 stick = 113 g');
+const oven = page('kitchen/oven-temperature');
+check(/<tr id="350f"><th scope="row">350 °F<\/th><td class="num-main">177 °C<\/td><td>180 °C<\/td><td>4</.test(oven), 'oven: 350 °F = 177 °C, gas 4');
+check(existsSync(join(ROOT, 'kitchen/recipe-scaler/index.html')) && existsSync(join(ROOT, 'kitchen/recipe-converter/index.html')), 'recipe tool pages exist');
+
+// 7. Recipe reader, scaler and converter.
+const match = R.makeMatcher(DATA.ingredients);
+const scale = [
+  ['2 1/4 cups all-purpose flour', 2, '4½ cups all-purpose flour'],
+  ['2 1/4 cups all-purpose flour', 0.5, '1 cup + 2 tbsp all-purpose flour'],
+  ['1 tsp salt', 3, '1 tbsp salt'],
+  ['1/4 cup sugar', 0.5, '2 tbsp sugar'],
+  ['1/3 cup sugar', 0.5, '2⅔ tbsp sugar'],
+  ['3 tablespoons cocoa powder', 1.5, '4½ tbsp cocoa powder'],
+  ['2 large eggs', 1.5, '3 large eggs'],
+  ['2 large eggs', 0.5, '1 large egg'],
+  ['1 egg', 2, '2 eggs'],
+  ['1 medium potato, diced', 3, '3 medium potatoes, diced'],
+  ['2 cloves garlic', 0.5, '1 clove garlic'],
+  ['Pinch of salt', 2, 'Pinch of salt'],
+  ['1 cup (120 g) flour', 2, '2 cups (240 g) flour'],
+  ['2-3 cups water', 2, '4–6 cups water'],
+  ['2 T honey', 2, '¼ cup honey'],
+  ['1½ cups milk', 2, '3 cups milk'],
+  ['3/4 cup sugar', 0.5, '6 tbsp sugar'],
+  ['2 3/4 cups flour', 0.5, '1¼ cups + 2 tbsp flour'],
+  ['2 1/4 cups flour', 1.5, '3¼ cups + 2 tbsp flour'],
+];
+for (const [line, f, want] of scale) { const got = R.scaleLine(line, f).text; check(got === want, `scale "${line}" x${f}: got "${got}", want "${want}"`); }
+const conv = [
+  ['2 1/4 cups all-purpose flour', 'grams', '270 g all-purpose flour (2¼ cups)'],
+  ['1 cup butter, softened', 'grams', '227 g butter, softened (1 cup)'],
+  ['3/4 cup packed brown sugar', 'grams', '160 g packed brown sugar (¾ cup)'],
+  ['1 cup (120 g) flour', 'grams', '120 g flour (1 cup)'],
+  ['1 stick butter', 'grams', '113 g butter (1 stick)'],
+  ['200 g all-purpose flour', 'cups', '1⅔ cups all-purpose flour (200 g)'],
+  ['100 g sugar', 'cups', '½ cup sugar (100 g)'],
+];
+for (const [line, t, want] of conv) { const got = R.convertLine(line, t, match).text; check(got === want, `convert "${line}" to ${t}: got "${got}", want "${want}"`); }
+for (const line of ['1 cup buttermilk', '2 tsp kosher salt', '1 cup rice flour', '1 cup coconut milk', '2 tsp vanilla extract']) {
+  check(R.convertLine(line, 'grams', match).status === 'unmatched', `"${line}" is left unmatched, not guessed`);
+}
+check(match('1/2 cup peanut butter').slug === 'peanut-butter', 'peanut butter is not butter');
+check(match('confectioners\' sugar').slug === 'powdered-sugar', "confectioners' sugar");
+check(match('1 cup plain flour').slug === 'all-purpose-flour', 'plain flour');
+check(match('2 cups semisweet chocolate chips').slug === 'chocolate-chips', 'chocolate chips');
 
 console.log(`${passes} passed, ${fails} failed`);
 process.exit(fails ? 1 : 0);
