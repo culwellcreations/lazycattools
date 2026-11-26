@@ -129,13 +129,21 @@ const conv = [
   ['100 g sugar', 'cups', '½ cup sugar (100 g)'],
 ];
 for (const [line, t, want] of conv) { const got = R.convertLine(line, t, match).text; check(got === want, `convert "${line}" to ${t}: got "${got}", want "${want}"`); }
-for (const line of ['1 cup buttermilk', '2 tsp kosher salt', '1 cup rice flour', '1 cup coconut milk', '2 tsp vanilla extract']) {
+for (const line of ['1 cup tahini', '2 tsp kosher salt', '1 cup corn flour', '1 cup rice flour', '1 cup coconut milk', '2 tsp vanilla extract']) {
   check(R.convertLine(line, 'grams', match).status === 'unmatched', `"${line}" is left unmatched, not guessed`);
 }
 check(match('1/2 cup peanut butter').slug === 'peanut-butter', 'peanut butter is not butter');
 check(match('confectioners\' sugar').slug === 'powdered-sugar', "confectioners' sugar");
 check(match('1 cup plain flour').slug === 'all-purpose-flour', 'plain flour');
 check(match('2 cups semisweet chocolate chips').slug === 'chocolate-chips', 'chocolate chips');
+check(match('1 cup buttermilk').slug === 'buttermilk', 'buttermilk is not butter or milk');
+check(match('8 oz cream cheese, softened').slug === 'cream-cheese', 'cream cheese');
+check(match('1 cup heavy whipping cream').slug === 'heavy-cream', 'heavy whipping cream');
+check(match('1/2 cup sour cream').slug === 'sour-cream', 'sour cream is not heavy cream');
+check(match('2 tbsp corn starch').slug === 'cornstarch', 'corn starch');
+for (const [line, want] of [['1 cup buttermilk', '245 g buttermilk (1 cup)'], ['1/4 cup maple syrup', '79 g maple syrup (¼ cup)'], ['2 tablespoons cornstarch', '16 g cornstarch (2 tbsp)']]) {
+  const got = R.convertLine(line, 'grams', match).text; check(got === want, `convert "${line}": got "${got}", want "${want}"`);
+}
 
 // 8. Guides.
 const { loadGuides } = await import(join(ROOT, '_build/guides.mjs'));

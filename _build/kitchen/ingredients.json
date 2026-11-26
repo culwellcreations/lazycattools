@@ -601,6 +601,125 @@
         "chocolate chunks",
         "choc chips"
       ]
+    },
+    {
+      "slug": "cornstarch",
+      "name": "Cornstarch",
+      "lower": "cornstarch",
+      "family": "flours",
+      "tier": 3,
+      "mode": "cup",
+      "gpc": 128,
+      "measured": "spooned into a dry measuring cup and leveled",
+      "source": "USDA FoodData Central (128 g per cup); Argo cornstarch label (1 tablespoon = 8 g); King Arthur Baking lists ¼ cup = 28 g",
+      "body": [
+        "A cup of cornstarch weighs about 128 g, and a tablespoon about 8 g, which is the serving size printed on the Argo box. King Arthur Baking uses a lighter 112 g per cup because they spoon it in very gently. Cornstarch packs down in the box, so a scooped cup can run heavier still.",
+        "Most recipes only call for a tablespoon or two, to thicken a pie filling, a gravy or a stir-fry sauce. At that size the cup-to-gram difference barely matters. It matters more in shortbread and some gluten-free blends, where cornstarch can be a quarter of the dry ingredients. Weigh it there.",
+        "To thicken a sauce, whisk the cornstarch into cold water first. Added straight to hot liquid it clumps into lumps that won't dissolve."
+      ],
+      "faq": {
+        "q": "How many grams is 1 tablespoon of cornstarch?",
+        "a": "About 8 g, the serving size on most cornstarch boxes. A teaspoon is about 2.7 g, and a cup is about 128 g."
+      },
+      "aliases": [
+        "cornstarch",
+        "corn starch"
+      ]
+    },
+    {
+      "slug": "heavy-cream",
+      "name": "Heavy Cream",
+      "lower": "heavy cream",
+      "family": "dairy",
+      "tier": 3,
+      "mode": "cup",
+      "gpc": 238,
+      "measured": "in a liquid measuring cup",
+      "source": "USDA FoodData Central (238 g per cup, heavy whipping cream, fluid); King Arthur Baking lists 227 g",
+      "body": [
+        "A cup of liquid heavy cream weighs about 238 g. The fat in cream is lighter than water, which is why a cup of cream weighs a little less than a cup of milk (244 g). Heavy cream and heavy whipping cream weigh the same for any recipe purpose.",
+        "These numbers are for cream straight from the carton. Whipped cream is mostly air: one cup of liquid cream whips up to about two cups, so a cup of whipped cream holds only around 120 g of actual cream. If a recipe says \"1 cup heavy cream, whipped\", measure the cream before you whip it.",
+        "Pour cream into a liquid measuring cup and read it at eye level, or pour it straight into the bowl on a scale."
+      ],
+      "faq": {
+        "q": "Does whipped cream weigh the same as liquid cream?",
+        "a": "No. Whipping roughly doubles the volume by adding air, so a cup of whipped cream weighs about half as much as a cup of liquid cream, around 120 g versus 238 g."
+      },
+      "aliases": [
+        "heavy cream",
+        "heavy whipping cream",
+        "whipping cream",
+        "double cream"
+      ]
+    },
+    {
+      "slug": "cream-cheese",
+      "name": "Cream Cheese",
+      "lower": "cream cheese",
+      "family": "dairy",
+      "tier": 3,
+      "mode": "cup",
+      "gpc": 227,
+      "measured": "packed into a dry measuring cup and leveled",
+      "source": "US packaging: one 8 oz block = 226.8 g and fills about 1 cup; King Arthur Baking lists 1 cup = 227 g",
+      "body": [
+        "A cup of cream cheese weighs about 227 g, and you rarely need to measure it, because a standard 8 oz block is exactly that: 226.8 g, which fills about one cup. Two blocks make 2 cups (454 g), the amount in a lot of cheesecake recipes.",
+        "Cream cheese is too stiff to measure accurately in a cup. It traps air pockets and smears up the sides. Go by the block, or use the markings on the foil wrapper, which usually show tablespoon lines (1 tablespoon is about 14 g).",
+        "Whipped cream cheese in a tub has air beaten into it, so a cup weighs noticeably less. Don't swap it cup for cup into baking recipes; weigh it instead."
+      ],
+      "faq": {
+        "q": "How many cups is an 8 oz block of cream cheese?",
+        "a": "About 1 cup. An 8 oz block weighs 226.8 g, which is the weight of 1 cup of cream cheese."
+      },
+      "aliases": [
+        "cream cheese"
+      ]
+    },
+    {
+      "slug": "buttermilk",
+      "name": "Buttermilk",
+      "lower": "buttermilk",
+      "family": "dairy",
+      "tier": 3,
+      "mode": "cup",
+      "gpc": 245,
+      "measured": "in a liquid measuring cup",
+      "source": "USDA FoodData Central (245 g per cup, cultured buttermilk); King Arthur Baking lists 227 g",
+      "body": [
+        "A cup of buttermilk weighs about 245 g, a hair more than whole milk. Store-bought buttermilk is cultured low-fat milk, thicker than milk but still pourable, so measure it in a liquid cup.",
+        "If you don't have any, the usual fix is 1 tablespoon of lemon juice or white vinegar in a liquid cup, topped up to the 1 cup line with milk. Let it sit for five to ten minutes until it thickens slightly. It weighs close enough to real buttermilk that you can swap it gram for gram.",
+        "Buttermilk's acid is what reacts with baking soda in pancakes, biscuits and soda bread. If you swap in plain milk instead, the recipe usually needs baking powder in place of some of the soda."
+      ],
+      "faq": {
+        "q": "Can I use milk with lemon juice instead of buttermilk?",
+        "a": "Yes. Put 1 tablespoon of lemon juice or vinegar in a cup, add milk to the 1 cup line and let it stand 5 to 10 minutes. Use it in the same amount, by volume or weight."
+      },
+      "aliases": [
+        "buttermilk"
+      ]
+    },
+    {
+      "slug": "maple-syrup",
+      "name": "Maple Syrup",
+      "lower": "maple syrup",
+      "family": "sugars",
+      "tier": 3,
+      "mode": "cup",
+      "gpc": 315,
+      "measured": "in a liquid measuring cup",
+      "source": "USDA FoodData Central (315 g per cup); King Arthur Baking lists ½ cup = 156 g",
+      "body": [
+        "A cup of pure maple syrup weighs about 315 g. That's a third more than a cup of water, and a bit lighter than honey (340 g). One tablespoon is about 20 g.",
+        "Pancake syrup is a different product. Table syrups are mostly corn syrup with maple flavoring, and they're thicker and heavier. If a recipe asks for maple syrup, it means the pure kind, and the weights here are for pure syrup.",
+        "Like honey, maple syrup clings to measuring cups and spoons, so some always stays behind. Pouring it straight into the bowl on a scale is the most accurate way to measure it. Grade doesn't change the weight in any way that matters for baking."
+      ],
+      "faq": {
+        "q": "How many grams is 1 tablespoon of maple syrup?",
+        "a": "About 20 g. A cup of pure maple syrup weighs roughly 315 g, and there are 16 tablespoons in a cup."
+      },
+      "aliases": [
+        "maple syrup"
+      ]
     }
   ],
   "amounts": {
