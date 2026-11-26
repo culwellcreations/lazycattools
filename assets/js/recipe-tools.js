@@ -301,6 +301,12 @@
       });
     }
     factorEl.addEventListener('input', function () { makesEl.value = ''; needEl.value = ''; });
+    // ?factor=1.27 (sent by the pan size converter) presets the scale.
+    var urlFactor = window.URLSearchParams ? new URLSearchParams(window.location.search).get('factor') : null;
+    if (urlFactor && K.parseAmount(urlFactor) > 0) {
+      factorEl.value = urlFactor;
+      for (var k = 0; k < quick.length; k++) quick[k].setAttribute('aria-pressed', String(quick[k].getAttribute('data-factor') === urlFactor));
+    }
     update();
   }
 

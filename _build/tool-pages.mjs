@@ -138,6 +138,7 @@ ${AD}
     { path: '/kitchen/recipe-converter/', name: 'Recipe Converter' },
     { path: '/kitchen/butter-converter/', name: 'Butter Converter' },
     { path: '/kitchen/oven-temperature/', name: 'Oven Temperature Converter' },
+    { path: '/kitchen/pan-size-converter/', name: 'Pan Size Converter' },
   ];
 
   toolPage({
@@ -286,6 +287,99 @@ ${AD}
       { q: 'What is 180 °C in Fahrenheit?', a: '180 °C is 356 °F. Recipes treat it as 350 °F, the standard baking temperature.' },
       { q: 'How do I convert a recipe for a fan oven?', a: 'Lower the temperature by about 20 °C (25 °F), or keep it the same and check for doneness 5 to 10 minutes early.' },
       { q: 'What temperature is gas mark 6?', a: 'Gas mark 6 is 400 °F or 200 °C, a hot oven used for roasting vegetables and baking bread rolls.' },
+    ],
+  });
+
+  // ── Pan size ──────────────────────────────────────────────────────────────
+  const panArea = (id) => { const p = K.panById(id); return K.panArea(p.shape, p.a, p.b); };
+  const panOpts = (sel) => `<optgroup label="Round">${K.PANS.filter((p) => p.shape === 'round').map((p) => `<option value="${p.id}"${p.id === sel ? ' selected' : ''}>${p.label}</option>`).join('')}</optgroup>
+          <optgroup label="Square &amp; rectangle">${K.PANS.filter((p) => p.shape === 'rect' && !p.id.startsWith('l')).map((p) => `<option value="${p.id}"${p.id === sel ? ' selected' : ''}>${p.label}</option>`).join('')}</optgroup>
+          <optgroup label="Loaf">${K.PANS.filter((p) => p.id.startsWith('l')).map((p) => `<option value="${p.id}"${p.id === sel ? ' selected' : ''}>${p.label}</option>`).join('')}</optgroup>
+          <optgroup label="Other size"><option value="custom-round">Custom round</option><option value="custom-square">Custom square</option><option value="custom-rect">Custom rectangle</option></optgroup>`;
+  const panSide = (k, legend, sel) => `<fieldset class="pan-set" data-pan="${k}">
+        <legend>${legend}</legend>
+        <div class="conv-row pan-row">
+          ${field(`${k}-pan`, 'Pan', `<select id="${k}-pan" name="${k}-pan">${panOpts(sel)}</select>`)}
+          ${field(`${k}-count`, 'How many', `<input id="${k}-count" name="${k}-count" type="text" inputmode="numeric" autocomplete="off" value="1">`)}
+        </div>
+        <div class="conv-row conv-row-3" data-custom hidden>
+          <div class="conv-field"><label for="${k}-a" data-a-label>Diameter</label><input id="${k}-a" name="${k}-a" type="text" inputmode="decimal" autocomplete="off" value="${k === 'from' ? '20' : '23'}"></div>
+          <div class="conv-field" data-b hidden><label for="${k}-b">Width</label><input id="${k}-b" name="${k}-b" type="text" inputmode="decimal" autocomplete="off" value="20"></div>
+          ${field(`${k}-unit`, 'Unit', select(`${k}-unit`, `${k}-unit`, [['in', 'inches'], ['cm', 'cm']], 'cm'))}
+        </div>
+      </fieldset>`;
+  const panChartRows = K.PANS.map((p) => {
+    const a = panArea(p.id);
+    return `<tr id="pan-${p.id}"><th scope="row">${p.label}</th><td class="num-main">${(+a.toFixed(1)).toLocaleString('en-US')} sq in</td><td>${Math.round(a * 6.4516).toLocaleString('en-US')} cm²</td><td>×${(a / panArea('r9')).toFixed(2)}</td></tr>`;
+  }).join('\n          ');
+  const SWAPS = [
+    ['r8', 1, 'r9', 1], ['r9', 1, 's8', 1], ['p9x13', 1, 'r9', 2], ['p9x13', 1, 's8', 2], ['r8', 2, 'p9x13', 1],
+    ['s8', 1, 'p9x13', 1], ['p9x13', 1, 'p18x13', 1], ['s9', 1, 's8', 1], ['r10', 1, 'r9', 1], ['l9', 1, 'l85', 1],
+  ];
+  const panName = (id, n) => { const l = K.panById(id).label; return n === 1 ? l : `${['', 'one', 'two', 'three'][n]} ${l}s`; };
+  const swapRows = SWAPS.map(([a, n, b, m]) => {
+    const r = (panArea(b) * m) / (panArea(a) * n);
+    const adv = K.panAdvice(r);
+    return `<tr><th scope="row">${panName(a, n)}</th><td>${panName(b, m)}</td><td class="num-main">${adv.kind === 'scale' ? `×${r.toFixed(2)}` : 'Same recipe'}</td></tr>`;
+  }).join('\n          ');
+
+  toolPage({
+    path: '/kitchen/pan-size-converter/',
+    name: 'Pan Size Converter',
+    metaTitle: 'Pan Size Converter: Swap Cake Pans & Resize Recipes | Lazy Cat Tools',
+    description: 'Baking in a different pan? Compare pan sizes by area and get the number to multiply your recipe by. An 8-inch to 9-inch round needs 1¼× the batter. Free, no sign-up.',
+    answer: 'Pick the pan the recipe uses and the pan you have. <strong>An 8-inch round recipe needs 1¼× the batter for a 9-inch round</strong>, and a 9×13 recipe fills two 9-inch rounds as written.',
+    appDesc: 'Compare baking pans by area and get the factor to scale a recipe for a different pan size.',
+    tool: `<form class="converter" data-pan-converter aria-label="Pan size converter">
+      ${panSide('from', 'Recipe pan', 'r8')}
+      ${panSide('to', 'Your pan', 'r9')}
+      <p class="conv-error" data-result-error hidden>Check the sizes: use numbers above 0, and 1 to 12 pans.</p>
+      <div class="conv-result" aria-live="polite">
+        <div class="conv-result-main" data-result-main>—</div>
+        <dl class="result-rows" data-result-rows></dl>
+        <p class="pan-note" data-pan-note></p>
+      </div>
+      <a class="btn-ghost pan-scale" data-pan-scale href="/kitchen/recipe-scaler/" hidden>Scale your recipe</a>
+      <p class="conv-note">Measure across the top, inside edge to inside edge. Sizes compare by area, assuming the same pan depth.</p>
+    </form>`,
+    scripts: `<script src="${JS_KITCHEN}" defer></script>`,
+    sections: `<section class="k-section" aria-labelledby="swap-h">
+      <h2 id="swap-h">Common pan swaps</h2>
+      <div class="chart-wrap"><table class="chart">
+        <caption>How much to multiply a recipe by when you change pans</caption>
+        <thead><tr><th scope="col">Recipe uses</th><th scope="col">You have</th><th scope="col">Multiply by</th></tr></thead>
+        <tbody>
+          ${swapRows}
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="k-section" aria-labelledby="chart-h">
+      <h2 id="chart-h">Baking pan sizes chart</h2>
+      <div class="chart-wrap"><table class="chart">
+        <caption>Area of common US baking pans, and how each compares with a 9-inch round</caption>
+        <thead><tr><th scope="col">Pan</th><th scope="col">Area</th><th scope="col">Metric</th><th scope="col">vs 9-inch round</th></tr></thead>
+        <tbody>
+          ${panChartRows}
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="k-section prose" aria-labelledby="about-h">
+      <h2 id="about-h">Why pans are compared by area</h2>
+      <p>Bake time depends mostly on how deep the batter is. If two pans have the same area, the same recipe fills them to the same depth and bakes in about the same time, whatever their shape. So the converter works out the area of each pan (π × radius² for a round, length × width for the rest) and tells you how much more or less batter you need to fill yours to the same depth.</p>
+      <p>Round pans hold less than their size suggests. A 9-inch round has about the same area as an 8-inch square, and going up one inch on a round pan adds about 25% more room. That's why an 8-inch layer cake recipe looks thin in 9-inch pans.</p>
+      <h3>If you don't want to scale the recipe</h3>
+      <p>Within about 10% either way, the recipe works as written. Past that, the batter ends up noticeably deeper or thinner. A deeper batter needs longer in the oven, and the edges can overbake before the middle sets, so lower the temperature by 25 °F and test with a toothpick. A thinner batter bakes faster, so start checking about two thirds of the way through the time. To change the amounts, the <a href="/kitchen/recipe-scaler/">recipe scaler</a> multiplies every line for you.</p>
+      <h3>Glass and dark pans</h3>
+      <p>Glass and dark nonstick pans absorb more heat than shiny metal and brown the edges faster. Many bakers lower the oven by 25 °F when using them, especially for cakes and brownies.</p>
+    </section>`,
+    faqs: [
+      { q: 'Can I use a 9×13 pan instead of two 9-inch rounds?', a: 'Yes. Two 9-inch rounds hold about 127 square inches and a 9×13 holds 117, so the batter sits a little deeper in the 9×13. Use the recipe as written and expect it to need a few extra minutes.' },
+      { q: 'What size round pan equals an 8×8 square?', a: 'A 9-inch round. Both are about 64 square inches, so they take the same recipe and a similar bake time.' },
+      { q: 'How much more batter does a 9-inch round need than an 8-inch?', a: 'About 27% more, so multiply the recipe by 1¼. A 9-inch round is 63.6 square inches and an 8-inch round is 50.3.' },
+      { q: 'How do I use a recipe written for a pan in centimeters?', a: 'Choose a custom round, square or rectangle, switch the unit to cm and enter the size. A 20 cm round is close to an 8-inch round, and a 23 cm round is close to a 9-inch.' },
+      { q: 'Does pan depth matter?', a: 'The converter assumes both pans are the same depth, which is true of most cake pans (2 inches). Fill cake pans about half to two thirds full, so a deep pan with the same area doesn’t need more batter.' },
     ],
   });
 

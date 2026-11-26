@@ -19,9 +19,9 @@ const K = require(join(ROOT, 'assets/js/kitchen-converter.js'));
 const DATA = JSON.parse(readFileSync(join(ROOT, '_build/kitchen/ingredients.json'), 'utf8'));
 const SITE = 'https://lazycattools.com';
 const CSS_SITE = '/assets/css/site.css?v=4';
-const CSS_KITCHEN = '/assets/css/kitchen.css?v=3';
-const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=2';
-const JS_RECIPE = '/assets/js/recipe-tools.js?v=1';
+const CSS_KITCHEN = '/assets/css/kitchen.css?v=4';
+const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=3';
+const JS_RECIPE = '/assets/js/recipe-tools.js?v=2';
 
 const ING = DATA.ingredients;
 const GUIDES = loadGuides(ROOT);
@@ -533,6 +533,7 @@ const TOOL_BLURBS = [
   ['/kitchen/cups-tablespoons-teaspoons/', 'Cups, Tablespoons & Teaspoons', '1 cup = 16 tbsp = 48 tsp, plus fluid ounces and ml.'],
   ['/kitchen/butter-converter/', 'Butter Converter', 'Sticks to cups, tablespoons and grams, and European blocks to sticks.'],
   ['/kitchen/oven-temperature/', 'Oven Temperature Converter', '°F, °C and gas mark, with fan oven settings.'],
+  ['/kitchen/pan-size-converter/', 'Pan Size Converter', 'Baking in a different pan? Get the number to multiply your recipe by.'],
 ];
 
 // ── hub ──────────────────────────────────────────────────────────────────────

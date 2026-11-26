@@ -69,7 +69,7 @@ for (const bad of ['', 'abc', '1 2', '1/0', '-']) check(Number.isNaN(K.parseAmou
 const sm = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
 const urls = [...sm.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 check(new Set(urls).size === urls.length, 'sitemap has no duplicates');
-check(urls.filter((u) => u.includes('/kitchen/')).length === 7 + DATA.ingredients.length + DATA.amounts.grams.length + DATA.amounts.cups.length, 'sitemap kitchen count');
+check(urls.filter((u) => u.includes('/kitchen/')).length === 8 + DATA.ingredients.length + DATA.amounts.grams.length + DATA.amounts.cups.length, 'sitemap kitchen count');
 
 // 6. Phase 3 tool pages and their charts.
 const R = require(join(ROOT, 'assets/js/recipe-tools.js'));
@@ -81,6 +81,19 @@ check(/<tr id="1-stick"><th scope="row">1 stick<\/th><td class="num-main">113 g<
 const oven = page('kitchen/oven-temperature');
 check(/<tr id="350f"><th scope="row">350 °F<\/th><td class="num-main">177 °C<\/td><td>180 °C<\/td><td>4</.test(oven), 'oven: 350 °F = 177 °C, gas 4');
 check(existsSync(join(ROOT, 'kitchen/recipe-scaler/index.html')) && existsSync(join(ROOT, 'kitchen/recipe-converter/index.html')), 'recipe tool pages exist');
+
+// Pan size converter.
+const PA = (id) => { const p = K.panById(id); return K.panArea(p.shape, p.a, p.b); };
+check(Math.abs(PA('r9') - 63.62) < 0.01, 'pan: 9-inch round = 63.6 sq in');
+check(PA('p9x13') === 117 && PA('s8') === 64, 'pan: 9×13 = 117, 8×8 = 64');
+check(K.panAdvice(PA('r9') / PA('r8')).main === 'Make 1¼×', 'pan: 8" → 9" round = 1¼×');
+check(K.panAdvice(PA('s8') / PA('r9')).kind === 'same', 'pan: 9" round ≈ 8×8');
+check(K.panAdvice((2 * PA('r9')) / PA('p9x13')).kind === 'close', 'pan: 9×13 → two 9" rounds works as written');
+check(K.panAdvice(PA('p18x13') / PA('p9x13')).main === 'Make 2×', 'pan: half sheet = 2× a 9×13');
+check(Math.abs(K.panArea('round', 20 / 2.54) - PA('r8')) / PA('r8') < 0.05, 'pan: 20 cm round ≈ 8-inch round');
+const pan = page('kitchen/pan-size-converter');
+check(/data-pan-converter/.test(pan) && /<tr id="pan-r9"><th scope="row">9-inch round<\/th><td class="num-main">63.6 sq in/.test(pan), 'pan page: chart row');
+check(/<th scope="row">8-inch round<\/th><td>9-inch round<\/td><td class="num-main">×1.27</.test(pan), 'pan page: swap 8" → 9" = ×1.27');
 
 // 7. Recipe reader, scaler and converter.
 const match = R.makeMatcher(DATA.ingredients);

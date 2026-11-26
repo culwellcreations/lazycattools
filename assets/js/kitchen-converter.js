@@ -141,7 +141,56 @@
     return String(ml >= 10 ? Math.round(ml) : round(ml, 1)) + ' ml';
   }
 
+  // ── Pans ──────────────────────────────────────────────────────────────────
+  // Sizes in inches, measured across the top inside edge. Area drives the
+  // conversion: same area means the same batter depth and a similar bake time.
+  var PANS = [
+    { id: 'r6', label: '6-inch round', shape: 'round', a: 6 },
+    { id: 'r8', label: '8-inch round', shape: 'round', a: 8 },
+    { id: 'r9', label: '9-inch round', shape: 'round', a: 9 },
+    { id: 'r10', label: '10-inch round', shape: 'round', a: 10 },
+    { id: 's8', label: '8×8 square', shape: 'rect', a: 8, b: 8 },
+    { id: 's9', label: '9×9 square', shape: 'rect', a: 9, b: 9 },
+    { id: 'p11x7', label: '11×7 rectangle', shape: 'rect', a: 11, b: 7 },
+    { id: 'p9x13', label: '9×13 rectangle', shape: 'rect', a: 9, b: 13 },
+    { id: 'p10x15', label: '10×15 jelly roll', shape: 'rect', a: 10, b: 15 },
+    { id: 'p18x13', label: '18×13 half sheet', shape: 'rect', a: 18, b: 13 },
+    { id: 'l85', label: '8½×4½ loaf', shape: 'rect', a: 8.5, b: 4.5 },
+    { id: 'l9', label: '9×5 loaf', shape: 'rect', a: 9, b: 5 }
+  ];
+  var CM2_PER_IN2 = 6.4516;
+
+  function panArea(shape, a, b) {
+    if (shape === 'round') return Math.PI * a * a / 4;
+    if (shape === 'square') return a * a;
+    return a * b;
+  }
+  function panById(id) { for (var i = 0; i < PANS.length; i++) if (PANS[i].id === id) return PANS[i]; return null; }
+
+  // Friendly multiplier text: 1.27 -> "1¼×" when within 3%, else "1.27×".
+  function factorText(f) {
+    var fr = toFraction(f);
+    var near = Math.abs(fr.value - f) / f <= 0.03;
+    return near && fr.text !== '0' ? fr.text + '×' : round(f, 2) + '×';
+  }
+
+  // What to tell the baker for a given area ratio (your pan ÷ recipe pan).
+  // Within 10% the recipe works as written; the batter is just a little
+  // deeper or thinner. Beyond that, scale it.
+  function panAdvice(ratio) {
+    var pct = Math.round((ratio - 1) * 100);
+    var size = pct > 0 ? pct + '% bigger' : (-pct) + '% smaller';
+    if (Math.abs(pct) <= 3) return { kind: 'same', main: 'Same recipe', note: 'The pans hold about the same, so use the recipe as written.' };
+    if (Math.abs(pct) <= 10) return { kind: 'close', main: 'Same recipe', note: 'Your pan is ' + size + ', close enough to use the recipe as written. The batter will be a little ' + (pct > 0 ? 'thinner, so start checking a few minutes early.' : 'deeper, so it may need a few extra minutes.') };
+    return { kind: 'scale', main: 'Make ' + factorText(ratio), note: 'Your pan is ' + size + '.' };
+  }
+
   var api = {
+    PANS: PANS,
+    panArea: panArea,
+    panById: panById,
+    factorText: factorText,
+    panAdvice: panAdvice,
     UNITS: UNITS,
     parseAmount: parseAmount,
     toGrams: toGrams,
@@ -315,6 +364,93 @@
     render();
   }
 
+  // Pan size: compare two pans (or sets of pans) by area.
+  function initPan(form) {
+    var mainEl = form.querySelector('[data-result-main]');
+    var errEl = form.querySelector('[data-result-error]');
+    var noteEl = form.querySelector('[data-pan-note]');
+    var linkEl = form.querySelector('[data-pan-scale]');
+    var sides = ['from', 'to'].map(function (k) {
+      var box = form.querySelector('[data-pan="' + k + '"]');
+      return {
+        box: box,
+        pan: box.querySelector('[name="' + k + '-pan"]'),
+        count: box.querySelector('[name="' + k + '-count"]'),
+        custom: box.querySelector('[data-custom]'),
+        a: box.querySelector('[name="' + k + '-a"]'),
+        b: box.querySelector('[name="' + k + '-b"]'),
+        bWrap: box.querySelector('[data-b]'),
+        aLabel: box.querySelector('[data-a-label]'),
+        unit: box.querySelector('[name="' + k + '-unit"]')
+      };
+    });
+
+    function readSide(s) {
+      var v = s.pan.value, shape, a, b, label;
+      var isCustom = v.indexOf('custom-') === 0;
+      s.custom.hidden = !isCustom;
+      var count = parseAmount(s.count.value);
+      var countBad = !(count >= 1 && count <= 12 && Math.round(count) === count);
+      s.count.setAttribute('aria-invalid', countBad ? 'true' : 'false');
+      if (isCustom) {
+        shape = v.slice(7);
+        s.bWrap.hidden = shape !== 'rect';
+        s.aLabel.textContent = shape === 'round' ? 'Diameter' : shape === 'square' ? 'Side' : 'Length';
+        var k = s.unit.value === 'cm' ? 1 / 2.54 : 1;
+        a = parseAmount(s.a.value) * k;
+        b = shape === 'rect' ? parseAmount(s.b.value) * k : a;
+        var dimBad = !(a > 0 && isFinite(a)) || (shape === 'rect' && !(b > 0 && isFinite(b)));
+        s.a.setAttribute('aria-invalid', !(a > 0) ? 'true' : 'false');
+        if (s.b) s.b.setAttribute('aria-invalid', shape === 'rect' && !(b > 0) ? 'true' : 'false');
+        if (dimBad || countBad) return null;
+        label = 'your custom pan';
+      } else {
+        var p = panById(v);
+        if (!p || countBad) return null;
+        shape = p.shape; a = p.a; b = p.b; label = p.label;
+      }
+      return { area: panArea(shape, a, b) * count, count: count, label: label };
+    }
+
+    function sq(n) { return round(n, 1) + ' sq in'; }
+
+    function render() {
+      var from = readSide(sides[0]), to = readSide(sides[1]);
+      var bad = !from || !to;
+      errEl.hidden = !bad;
+      if (bad) { mainEl.textContent = '—'; setRows(form, []); noteEl.textContent = ''; linkEl.hidden = true; return; }
+      var ratio = to.area / from.area;
+      var adv = panAdvice(ratio);
+      mainEl.textContent = adv.main;
+      var depth = from.area / to.area;
+      var rows = [
+        ['Recipe pan', sq(from.area)],
+        ['Your pan', sq(to.area)],
+        ['Multiply by', '×' + round(ratio, 2)]
+      ];
+      if (adv.kind !== 'same') rows.push(['Batter as written', Math.round(Math.abs(depth - 1) * 100) + '% ' + (depth > 1 ? 'deeper' : 'thinner')]);
+      setRows(form, rows);
+      var tip = '';
+      if (adv.kind === 'scale') tip = ' Scaled to fit, the batter stays the same depth, so keep the temperature and start checking at the recipe’s time. ' +
+        (depth > 1.25 ? 'As written, the full recipe would likely overfill the pan, so scale it down or bake the extra batter as cupcakes.'
+          : depth > 1 ? 'If you use the recipe as written instead, the deeper batter needs longer: lower the oven by 25 °F and bake until a tester comes out clean.'
+          : 'If you use the recipe as written instead, the thinner layer bakes faster: start checking about two thirds of the way through the time.');
+      if (to.count > 1) adv = { kind: adv.kind, main: adv.main, note: adv.note.replace('Your pan is', 'Your pans are') };
+      noteEl.textContent = adv.note + tip;
+      var showLink = adv.kind !== 'same';
+      linkEl.hidden = !showLink;
+      if (showLink) {
+        var f = String(round(ratio, 2));
+        linkEl.href = '/kitchen/recipe-scaler/?factor=' + f;
+        linkEl.textContent = 'Scale your recipe by ' + f + '× →';
+      }
+    }
+    form.addEventListener('input', render);
+    form.addEventListener('change', render);
+    form.addEventListener('submit', function (e) { e.preventDefault(); render(); });
+    render();
+  }
+
   function boot() {
     var forms = document.querySelectorAll('[data-kitchen-converter]');
     for (var i = 0; i < forms.length; i++) init(forms[i]);
@@ -322,6 +458,7 @@
     each('[data-volume-converter]', initVolume);
     each('[data-butter-converter]', initButter);
     each('[data-oven-converter]', initOven);
+    each('[data-pan-converter]', initPan);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

@@ -434,3 +434,15 @@
 .guide-body li::marker { color: var(--accent); font-weight: 700; }
 .guide-body .chart-wrap { margin: 0.5rem 0 1.25rem; }
 .guide-body strong { color: var(--ink); }
+
+/* ── Pan size converter ────────────────────────────────────────────────── */
+
+.pan-set { border: 0; display: grid; gap: 0.6rem; min-width: 0; }
+.pan-set + .pan-set { margin-top: 0.25rem; }
+.pan-set legend { font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.pan-row { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.pan-note { margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.55; color: var(--ink); max-width: 60ch; }
+.pan-note:empty { display: none; }
+.pan-scale { justify-self: start; text-decoration: none; }
+.pan-scale[hidden] { display: none; }
+[data-custom][hidden], [data-b][hidden] { display: none; }
