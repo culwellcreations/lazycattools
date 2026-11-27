@@ -607,6 +607,7 @@ function sitemap() {
   const fixed = [
     ['/', 'weekly', '1.0'],
     ['/tools/secret-santa-generator/', 'monthly', '0.9'],
+    ['/tools/spin-the-wheel/', 'monthly', '0.9'],
     ['/tools/random-team-generator/', 'monthly', '0.9'],
     ['/tools/random-name-picker/', 'monthly', '0.9'],
     ['/tools/coin-flip/', 'monthly', '0.9'],
@@ -669,4 +670,4 @@ DATA.amounts.grams.forEach(gramsPage);
 DATA.amounts.cups.forEach(cupsPage);
 sitemap();
 llms();
-console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 9} URLs.`);
+console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 10} URLs.`);
