@@ -12,3 +12,19 @@ Every page under `/kitchen/` is generated. Don't edit those HTML files by hand; 
 1. Add an entry to `ingredients` with `slug`, `name`, `lower`, `family`, `tier`, `mode` (`cup`, or `spoon` for things measured in teaspoons), `gpc` (grams per US cup), `measured`, `source`, at least 80 words of `body`, and one `faq`.
 2. Run the build, then the test.
 3. If you changed `assets/css/kitchen.css` or `assets/js/kitchen-converter.js`, bump the `?v=` numbers at the top of `build-kitchen.mjs` so browsers fetch the new file.
+
+# Randomizer pages
+
+`_build/randomizers/list.mjs` lists every randomizer in homepage order. It drives the homepage cards, the "More randomizers" block on every randomizer page, the sitemap entries and the Tools list in `llms.txt`.
+
+- **Generated tools** (`built: 'gen'`): page text, controls and FAQ live in `_build/randomizers/<slug>.mjs`; behavior lives in `tools/<slug>/tool.js` (logic at the top, exported for the tests). Don't edit their `index.html`.
+- **Hand-built tools** (`built: 'hand'`): edit their HTML directly, but leave the `randomizers:start/end` block alone.
+- **Shared:** `assets/js/rand.js` (all randomness, from `crypto.getRandomValues`) and `assets/css/tool.css`.
+- **Build:** `node _build/build-randomizers.mjs`, then `node _build/build-kitchen.mjs` (it writes the sitemap).
+- **Test:** `node _build/test-randomizers.mjs`, plus `test-secret-santa.mjs` and `test-spin-the-wheel.mjs`.
+
+## Adding a randomizer
+
+1. Add it to `list.mjs` (slug, name, card text, llms text, icon, priority).
+2. For a generated page, add `_build/randomizers/<slug>.mjs` and `tools/<slug>/tool.js` (and `style.css` with `css: true` if it needs one).
+3. Run both builds and the tests.

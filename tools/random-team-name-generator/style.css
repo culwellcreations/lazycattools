@@ -1,0 +1,5 @@
+/* Team Name Generator: page-specific styles. Shared ones are in /assets/css/tool.css. */
+
+.result-list.names li { padding: 0.45rem 0.5rem 0.45rem 0.95rem; }
+.result-list.names .grow { font-size: 1.1rem; font-weight: 800; color: var(--ink); }
+.copy-one { padding: 0.4rem 0.75rem; min-height: 40px; flex-shrink: 0; }

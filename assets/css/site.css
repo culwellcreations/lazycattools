@@ -360,6 +360,34 @@ body {
   border-radius: var(--radius-sm);
 }
 
+/* ── More randomizers (every randomizer page) ─────────────────────────────── */
+
+.more-tools {
+  background: var(--warm-bg);
+  border-top: 1px solid var(--warm-border);
+  padding: 1.1rem 1.5rem 1.25rem;
+}
+.more-tools-inner { max-width: var(--max-width); margin: 0 auto; text-align: center; }
+.more-tools h2 {
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--warm-text);
+  margin-bottom: 0.6rem;
+}
+.more-tools ul {
+  list-style: none;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.25rem 1.1rem;
+}
+.more-tools a {
+  display: inline-block;
+  padding: 0.3rem 0;
+  color: var(--warm);
+  font-size: 0.9rem; font-weight: 700;
+  text-decoration: none;
+}
+.more-tools a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
 /* ── Reduced Motion ───────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

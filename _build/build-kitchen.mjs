@@ -12,13 +12,14 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildToolPages } from './tool-pages.mjs';
 import { loadGuides, buildGuidePages, guidesListHtml } from './guides.mjs';
+import { RANDOMIZERS, toolUrl } from './randomizers/list.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const K = require(join(ROOT, 'assets/js/kitchen-converter.js'));
 const DATA = JSON.parse(readFileSync(join(ROOT, '_build/kitchen/ingredients.json'), 'utf8'));
 const SITE = 'https://lazycattools.com';
-const CSS_SITE = '/assets/css/site.css?v=4';
+const CSS_SITE = '/assets/css/site.css?v=5';
 const CSS_KITCHEN = '/assets/css/kitchen.css?v=4';
 const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=3';
 const JS_RECIPE = '/assets/js/recipe-tools.js?v=2';
@@ -606,11 +607,7 @@ function hubPage() {
 function sitemap() {
   const fixed = [
     ['/', 'weekly', '1.0'],
-    ['/tools/secret-santa-generator/', 'monthly', '0.9'],
-    ['/tools/spin-the-wheel/', 'monthly', '0.9'],
-    ['/tools/random-team-generator/', 'monthly', '0.9'],
-    ['/tools/random-name-picker/', 'monthly', '0.9'],
-    ['/tools/coin-flip/', 'monthly', '0.9'],
+    ...RANDOMIZERS.map((t) => [toolUrl(t), 'monthly', t.priority]),
   ];
   const pages = [['/pages/about/', 'yearly', '0.3'], ['/pages/privacy/', 'yearly', '0.3'], ['/pages/contact/', 'yearly', '0.3'], ['/pages/terms/', 'yearly', '0.3']];
   const kitchen = generated.map((p) => [p, 'monthly', (p === '/kitchen/' || TOOL_BLURBS.some((t) => t[0] === p)) ? '0.9' : '0.7']);
@@ -670,4 +667,4 @@ DATA.amounts.grams.forEach(gramsPage);
 DATA.amounts.cups.forEach(cupsPage);
 sitemap();
 llms();
-console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 10} URLs.`);
+console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 5 + RANDOMIZERS.length} URLs.`);
