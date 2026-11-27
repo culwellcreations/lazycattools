@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBCK7DP1KN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBCK7DP1KN');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2241687723515076" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Santa Generator: Free, No Sign-Up | Lazy Cat Tools</title>
+  <meta name="description" content="Free Secret Santa generator. Paste names, keep couples apart, and send each person a private link to their draw. No sign-up, no emails collected.">
+  <meta property="og:title" content="Secret Santa Generator | Lazy Cat Tools">
+  <meta property="og:description" content="Draw names and send everyone a private link. Free, no sign-up.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lazycattools.com/tools/secret-santa-generator/">
+  <meta property="og:image" content="https://lazycattools.com/assets/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Secret Santa Generator | Lazy Cat Tools">
+  <meta name="twitter:description" content="Draw names and send everyone a private link. Free, no sign-up.">
+  <meta name="twitter:image" content="https://lazycattools.com/assets/images/og-default.png">
+  <meta name="referrer" content="no-referrer">
+  <link rel="canonical" href="https://lazycattools.com/tools/secret-santa-generator/">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css?v=4">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Secret Santa Generator",
+        "url": "https://lazycattools.com/tools/secret-santa-generator/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Draw Secret Santa names in your browser, keep couples apart, and send each person a private link to their draw. Free, no sign-up.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Lazy Cat Tools",
+          "url": "https://lazycattools.com"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can someone draw their own name?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Every draw is checked before you see it. Nobody gets themselves, and everyone gives exactly one gift and gets exactly one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I keep couples from drawing each other?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open Keep people apart, pick the two names and tap Add. It works both ways: neither person can draw the other. Add as many pairs as you need."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the organizer join the exchange too?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Send everyone their private link and don't open the other links yourself. You only see your own draw, the same as everyone else."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my list uploaded anywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The draw happens in your browser and nothing is saved. Each private link carries one person's draw in the part of the address after the #, which browsers don't send to the website."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many people can I add?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "From 3 to 100. Each name has to be different, so add a last initial if two people share a first name."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does it say no valid draw is possible?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your exclusions leave someone with nobody they're allowed to buy for. It happens most with small groups: with 3 people, keeping any two apart makes a draw impossible. Remove an exclusion or add a person and draw again."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo" aria-label="Lazy Cat Tools home">
+        <img class="site-logo-icon" src="/assets/images/lazy cat.svg" alt="" aria-hidden="true">
+        <span class="site-logo-text">Lazy Cat Tools</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="/#tools">Tools</a>
+        <a href="/kitchen/">Kitchen</a>
+        <a href="/pages/about/">About</a>
+        <a href="/pages/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main id="main-content" class="tool-main">
+
+    <div class="tool-header">
+      <h1>Secret Santa Generator</h1>
+      <p id="tool-tagline">Draw names, then send everyone a private link. Free, no sign-up.</p>
+    </div>
+
+    <!-- Shown when someone opens their private link -->
+    <section class="tool-card link-view" id="link-view" aria-labelledby="link-hello" hidden>
+      <p class="link-group" id="link-group" hidden></p>
+      <h2 class="link-hello" id="link-hello"></h2>
+      <div id="link-cover">
+        <p class="link-note">Your Secret Santa draw is ready. Check nobody's reading over your shoulder.</p>
+        <button type="button" class="btn-primary" id="btn-link-reveal">Show my draw</button>
+      </div>
+      <div class="link-result" id="link-result" hidden>
+        <p class="link-label">You're buying a gift for</p>
+        <p class="link-recipient" id="link-recipient"></p>
+        <p class="link-meta" id="link-meta"></p>
+        <button type="button" class="btn-secondary" id="btn-link-hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          Hide it again
+        </button>
+      </div>
+      <p class="link-bad" id="link-bad" hidden>This link doesn't hold a draw. It may have been cut off when it was copied. Ask your organizer to send it again.</p>
+      <p class="link-own"><a href="/tools/secret-santa-generator/" id="link-start-own">Organizing your own exchange? Draw names here.</a></p>
+    </section>
+
+    <div class="tool-card" id="organizer">
+
+      <section class="input-section" id="setup" aria-label="Secret Santa setup">
+
+        <div class="field-group">
+          <div class="label-row">
+            <label for="names-input">Who's in? <span class="hint">(one name per line)</span></label>
+            <span class="count" id="name-count" aria-live="polite">0 people</span>
+          </div>
+          <textarea
+            id="names-input"
+            rows="7"
+            placeholder="Alex&#10;Sam&#10;Jordan&#10;Taylor"
+            spellcheck="false"
+            autocomplete="off"
+          ></textarea>
+          <div class="upload-row">
+            <label class="btn-upload" for="file-input">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload .txt or .csv
+            </label>
+            <input type="file" id="file-input" accept=".txt,.csv" aria-label="Upload a text or CSV file of names">
+            <button type="button" class="btn-text" id="btn-clear">Clear list</button>
+            <span class="upload-hint" id="upload-hint" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <div class="details-row">
+          <div class="field-group">
+            <label for="group-input">Exchange name <span class="hint">(optional)</span></label>
+            <input type="text" id="group-input" maxlength="40" placeholder="Office party" autocomplete="off">
+          </div>
+          <div class="field-group">
+            <label for="budget-input">Spending limit <span class="hint">(optional)</span></label>
+            <input type="text" id="budget-input" maxlength="20" placeholder="$25" autocomplete="off">
+          </div>
+          <div class="field-group">
+            <label for="date-input">Exchange date <span class="hint">(optional)</span></label>
+            <input type="date" id="date-input">
+          </div>
+        </div>
+
+        <details class="exclusions" id="exclusions">
+          <summary>
+            <span>Keep people apart <span class="hint">(optional)</span></span>
+            <span class="excl-badge" id="excl-badge" hidden></span>
+          </summary>
+          <div class="excl-body">
+            <p class="excl-help">For couples, housemates, or anyone who already knows what the other is getting. Works both ways: neither can draw the other.</p>
+            <div class="excl-add">
+              <label class="visually-hidden" for="excl-a">First person</label>
+              <select id="excl-a"></select>
+              <span class="excl-and" aria-hidden="true">and</span>
+              <label class="visually-hidden" for="excl-b">Second person</label>
+              <select id="excl-b"></select>
+              <button type="button" class="btn-secondary" id="btn-excl-add">Add</button>
+            </div>
+            <p class="excl-empty" id="excl-empty">Add at least 2 names above to pick from.</p>
+            <ul class="excl-list" id="excl-list" aria-label="People kept apart"></ul>
+          </div>
+        </details>
+
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+
+        <button type="button" id="btn-draw" class="btn-primary">Draw Names</button>
+
+      </section>
+
+      <section class="results-section" id="results" aria-labelledby="results-heading" hidden>
+        <div class="results-top">
+          <h2 class="results-heading" id="results-heading">Names drawn</h2>
+          <p class="results-meta" id="results-meta"></p>
+        </div>
+
+        <p class="results-help">Send each person their private link, or pass this device around and let each person tap their own name. Nobody sees anyone else's draw.</p>
+
+        <ul class="draw-list" id="draw-list"></ul>
+        <p class="visually-hidden" id="reveal-status" aria-live="polite"></p>
+
+        <div class="action-row">
+          <button type="button" class="btn-secondary" id="btn-redraw">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+            Draw again
+          </button>
+          <button type="button" class="btn-secondary" id="btn-print">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print slips
+          </button>
+          <button type="button" class="btn-secondary" id="btn-start-over">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+            Edit names
+          </button>
+        </div>
+
+        <div class="organizer-zone">
+          <button type="button" class="btn-text" id="btn-show-all">See everyone's draw</button>
+          <div class="confirm-box" id="confirm-all" hidden>
+            <p><strong>Only do this if you're the organizer and not taking part.</strong> It shows every draw at once, yours included.</p>
+            <div class="action-row">
+              <button type="button" class="btn-secondary btn-danger" id="btn-confirm-all">Show everyone's draw</button>
+              <button type="button" class="btn-secondary" id="btn-cancel-all">Cancel</button>
+            </div>
+          </div>
+          <div class="all-draws" id="all-draws" hidden>
+            <ol class="all-list" id="all-list"></ol>
+            <p class="all-warn">Only copy this if you're keeping it somewhere private.</p>
+            <div class="action-row">
+              <button type="button" class="btn-secondary" id="btn-copy-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy as text
+              </button>
+              <button type="button" class="btn-secondary" id="btn-hide-all">Hide the list</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="crosslink-card" id="crosslink-card">
+      <span class="crosslink-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+      </span>
+      <div>
+        <strong>Need to pick who opens first?</strong>
+        <a href="/tools/random-name-picker/">Random Name Picker →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Print-only: one slip per person, to cut apart and fold -->
+  <div class="print-slips" id="print-slips" aria-hidden="true"></div>
+
+  <!-- Ad Slot: Below Tool -->
+  <div class="ad-slot ad-mid" aria-hidden="true">
+    <!-- AdSense code goes here -->
+  </div>
+
+  <section class="faq-section" aria-label="About the Secret Santa generator">
+    <div class="faq-inner">
+      <h2>How to Use the Secret Santa Generator</h2>
+      <p>Type or paste everyone's name, one per line. Add a spending limit and exchange date if you want them on everyone's draw. If anyone shouldn't draw each other, open <strong>Keep people apart</strong> and add the pair. Then tap <strong>Draw Names</strong>.</p>
+      <p>Now get the draws to people. Tap <strong>Copy link</strong> next to each name and send that link to that person by text or email. When they open it, they see their own draw and nobody else's. If everyone's in the same room, skip the links: pass your phone around and have each person tap their own name, look, and tap <strong>Hide</strong> before handing it on. <strong>Print slips</strong> gives you one slip per person to fold and hand out.</p>
+
+      <h2>How the private links work</h2>
+      <p>Each link carries one person's draw in the part of the address after the <code>#</code>. Browsers never send that part to a website, so the draw goes from your device to theirs without passing through ours. Nothing is stored, and there's no account to make.</p>
+      <p>The links are private, not locked. Anyone who opens a link sees that draw, so send each link only to its person. If you're the organizer and you're also in the exchange, just don't open the other links yourself.</p>
+
+      <h2>How to run a Secret Santa</h2>
+      <ol>
+        <li><strong>Set a spending limit.</strong> $20 to $30 is typical for coworkers and $25 to $50 for family. A clear number keeps one person from showing up with a $5 mug while someone else spent $60.</li>
+        <li><strong>Pick the exchange date.</strong> Give people at least two weeks, more if gifts need to ship.</li>
+        <li><strong>Collect names and the people to keep apart.</strong> Couples and housemates usually sit out drawing each other.</li>
+        <li><strong>Draw and send the links.</strong> Ask everyone to reply once they've opened theirs, so you know nobody's link went to spam.</li>
+        <li><strong>Keep it secret until the day.</strong> If someone loses their draw, you can open their link again without seeing anyone else's.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <details open>
+        <summary>Can someone draw their own name?</summary>
+        <p>No. Every draw is checked before you see it. Nobody gets themselves, and everyone gives exactly one gift and gets exactly one.</p>
+      </details>
+
+      <details>
+        <summary>How do I keep couples from drawing each other?</summary>
+        <p>Open <strong>Keep people apart</strong>, pick the two names and tap <strong>Add</strong>. It works both ways: neither person can draw the other. Add as many pairs as you need.</p>
+      </details>
+
+      <details>
+        <summary>Can the organizer join the exchange too?</summary>
+        <p>Yes. Send everyone their private link and don't open the other links yourself. You only see your own draw, the same as everyone else.</p>
+      </details>
+
+      <details>
+        <summary>Is my list uploaded anywhere?</summary>
+        <p>No. The draw happens in your browser and nothing is saved. Each private link carries one person's draw in the part of the address after the #, which browsers don't send to the website. Close the tab and the list is gone.</p>
+      </details>
+
+      <details>
+        <summary>Is the draw fair?</summary>
+        <p>Yes. The names are shuffled with your browser's secure random number generator, and any shuffle that breaks a rule (someone drawing themselves, or a pair you kept apart) is thrown out and reshuffled. Every valid draw is equally likely.</p>
+      </details>
+
+      <details>
+        <summary>How many people can I add?</summary>
+        <p>From 3 to 100. Each name has to be different, so add a last initial if two people share a first name.</p>
+      </details>
+
+      <details>
+        <summary>Why does it say no valid draw is possible?</summary>
+        <p>Your exclusions leave someone with nobody they're allowed to buy for. It happens most with small groups: with 3 people, keeping any two apart makes a draw impossible. Remove an exclusion or add a person and draw again.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="crosslink-banner">
+    <span>More randomizers:</span>
+    <a href="/tools/random-name-picker/">Random Name Picker</a>
+    <span aria-hidden="true">·</span>
+    <a href="/tools/random-team-generator/">Random Team Generator</a>
+    <span aria-hidden="true">·</span>
+    <a href="/tools/coin-flip/">Coin Flip</a>
+  </div>
+
+  <!-- Ad Slot: Bottom Banner -->
+  <div class="ad-slot ad-bottom" aria-hidden="true">
+    <!-- AdSense code goes here -->
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-cat-wrap" aria-hidden="true">
+      <img class="footer-cat-peek" src="/assets/images/lazy cat.svg" alt="" aria-hidden="true">
+    </div>
+    <div class="site-footer-inner">
+      <p>© 2026 Lazy Cat Tools</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/pages/about/">About</a>
+        <a href="/pages/contact/">Contact</a>
+        <a href="/pages/privacy/">Privacy</a>
+        <a href="/pages/terms/">Terms</a>
+        <a href="https://buymeacoffee.com/culwellcreations" target="_blank" rel="noopener noreferrer">Buy me a Diet Coke</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="draw.js?v=1"></script>
+  <script src="script.js?v=1"></script>
+</body>
+</html>

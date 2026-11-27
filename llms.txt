@@ -6,6 +6,8 @@ Lazy Cat Tools (lazycattools.com) is a collection of lightweight, client-side ut
 
 ## Tools
 
+- [Secret Santa Generator](https://lazycattools.com/tools/secret-santa-generator/): Draw Secret Santa names for 3 to 100 people. Nobody draws themselves, couples or housemates can be kept apart, and each person gets a private link that shows only their own draw. Runs in the browser; nothing is uploaded or saved.
+
 - [Random Team Generator](https://lazycattools.com/tools/random-team-generator/): Split any list of names into random, balanced teams. Supports 2–10 teams, uneven group sizes, file upload (.txt/.csv), random team name generation, and shareable result links. Used by teachers, coaches, trivia hosts, and team leads.
 
 - [Random Name Picker](https://lazycattools.com/tools/random-name-picker/): Pick a random winner or participant from any list of names. Useful for giveaways, classroom callouts, raffle draws, and any situation where you need an impartial pick.
