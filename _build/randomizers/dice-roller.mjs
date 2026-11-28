@@ -53,7 +53,7 @@ export default {
   <p class="visually-hidden" id="announce" aria-live="polite"></p>
   <div class="history" id="history" hidden>
     <div class="history-head">
-      <h3 class="history-title">Last 20 rolls</h3>
+      <h2 class="history-title">Last 20 rolls</h2>
       <button type="button" class="btn-text" id="btn-clear-history">Clear history</button>
     </div>
     <ol class="history-list" id="history-list"></ol>

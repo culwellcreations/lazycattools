@@ -54,7 +54,7 @@ export default {
   </div>
   <div class="history" id="history" hidden>
     <div class="history-head">
-      <h3 class="history-title">Last 10</h3>
+      <h2 class="history-title">Last 10</h2>
       <button type="button" class="btn-text" id="btn-clear-history">Clear history</button>
     </div>
     <ol class="history-list" id="history-list"></ol>
