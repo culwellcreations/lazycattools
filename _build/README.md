@@ -28,3 +28,13 @@ Every page under `/kitchen/` is generated. Don't edit those HTML files by hand; 
 1. Add it to `list.mjs` (slug, name, card text, llms text, icon, priority).
 2. For a generated page, add `_build/randomizers/<slug>.mjs` and `tools/<slug>/tool.js` (and `style.css` with `css: true` if it needs one).
 3. Run both builds and the tests.
+
+# Kitchen tools, part 2
+
+Air fryer, meat temperature, coffee ratio, rice to water, ingredient substitutions, cup fractions, pressure cooker times and turkey.
+
+- **Pages:** `_build/kitchen-tools-2.mjs` (page text, tables, FAQs). `build-kitchen.mjs` builds them through the same `toolPage()` as the other kitchen tools, and adds them to the hub, sitemap (priority 0.8), `llms.txt` and the homepage Kitchen cards.
+- **Math and sourced numbers:** `assets/js/kitchen-tools.js`. Each data block names its source (FoodSafety.gov temperatures, the USDA turkey timetable, the Instant Pot Duo Evo Plus manual, Morton and King Arthur salt weights, Hershey's egg swaps, National Honey Board tips). Change numbers there, not in the HTML.
+- **Pressure cooker rows:** `src: 'manual'` rows come from the Instant Pot manual; `src: 'common'` rows are common recipe times and show a † on the page.
+- **Test:** `node _build/test-kitchen-tools-2.mjs` after building.
+- **Cache:** bump `JS_TOOLS2` in `kitchen-tools-2.mjs` when `kitchen-tools.js` changes, and `CSS_KITCHEN` (now v5) when `kitchen.css` changes.

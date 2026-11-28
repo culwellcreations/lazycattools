@@ -446,3 +446,32 @@
 .pan-scale { justify-self: start; text-decoration: none; }
 .pan-scale[hidden] { display: none; }
 [data-custom][hidden], [data-b][hidden] { display: none; }
+
+/* ── Kitchen tools, part 2 ─────────────────────────────────────────────────── */
+
+.conv-field .label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; }
+.converter .seg button { min-height: 44px; }
+.conv-result .conv-note { margin-top: 0.6rem; }
+
+.sub-glance { margin-bottom: 0.5rem; }
+.sub-section .converter { margin: 1rem 0 0.75rem; }
+.sub-fit { font-size: 0.92rem; color: var(--stone); line-height: 1.55; }
+.sub-fit strong { color: var(--ink); }
+
+.table-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 0.75rem;
+}
+.table-controls input[type="search"] { width: 100%; }
+.table-count { grid-column: 1 / -1; font-size: 0.85rem; font-weight: 700; color: var(--stone); font-variant-numeric: tabular-nums; }
+.table-empty { padding: 0.75rem 0; color: var(--stone); }
+.pressure-table .row-note td { font-size: 0.85rem; color: var(--stone); padding-top: 0; border-top: none; }
+.src-mark { color: var(--warm); font-weight: 800; cursor: help; }
+
+@media (max-width: 560px) {
+  .table-controls { grid-template-columns: 1fr; }
+}
+.table-controls input::placeholder { color: var(--stone); opacity: 1; }

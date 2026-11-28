@@ -2,6 +2,7 @@
 // Checks the generated kitchen pages against the data and known answers.
 // Run after building:  node _build/test-kitchen.mjs
 import { readFileSync, existsSync } from 'node:fs';
+import { KITCHEN_TOOLS_2 } from './kitchen-tools-2.mjs';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -69,7 +70,7 @@ for (const bad of ['', 'abc', '1 2', '1/0', '-']) check(Number.isNaN(K.parseAmou
 const sm = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
 const urls = [...sm.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 check(new Set(urls).size === urls.length, 'sitemap has no duplicates');
-check(urls.filter((u) => u.includes('/kitchen/')).length === 8 + DATA.ingredients.length + DATA.amounts.grams.length + DATA.amounts.cups.length, 'sitemap kitchen count');
+check(urls.filter((u) => u.includes('/kitchen/')).length === 8 + KITCHEN_TOOLS_2.length + DATA.ingredients.length + DATA.amounts.grams.length + DATA.amounts.cups.length, 'sitemap kitchen count');
 
 // 6. Phase 3 tool pages and their charts.
 const R = require(join(ROOT, 'assets/js/recipe-tools.js'));

@@ -1,6 +1,9 @@
 // Hand-designed kitchen tool pages (spoons, butter, oven, recipe scaler,
 // recipe converter). Imported by build-kitchen.mjs, which passes in its shared
-// helpers so every page has the same chrome.
+// helpers so every page has the same chrome. The second set of tools (air
+// fryer, meat, coffee, rice, substitutions, cup fractions, pressure cooker,
+// turkey) lives in kitchen-tools-2.mjs and uses the same toolPage().
+import { KITCHEN_TOOLS_2, buildKitchenTools2 } from './kitchen-tools-2.mjs';
 
 export function buildToolPages(h) {
   const { K, ING, esc, g, oz, head, FOOT, AD, crumbs, crumbsLd, faqHtml, faqLd, appLd, write, generated, ingUrl, JS_KITCHEN, JS_RECIPE } = h;
@@ -139,6 +142,7 @@ ${AD}
     { path: '/kitchen/butter-converter/', name: 'Butter Converter' },
     { path: '/kitchen/oven-temperature/', name: 'Oven Temperature Converter' },
     { path: '/kitchen/pan-size-converter/', name: 'Pan Size Converter' },
+    ...KITCHEN_TOOLS_2.map((t) => ({ path: t.path, name: t.name })),
   ];
 
   toolPage({
@@ -432,6 +436,8 @@ ${AD}
       { q: 'Can it convert grams back to cups?', a: 'Yes. Choose "Cups & spoons" and lines measured in grams, ounces or pounds are converted to cups, tablespoons or teaspoons.' },
     ],
   });
+
+  buildKitchenTools2({ ...h, toolPage, field, select });
 
   return TOOLS;
 }

@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { buildToolPages } from './tool-pages.mjs';
 import { loadGuides, buildGuidePages, guidesListHtml } from './guides.mjs';
 import { RANDOMIZERS, toolUrl } from './randomizers/list.mjs';
+import { KITCHEN_TOOLS_2 } from './kitchen-tools-2.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -20,7 +21,7 @@ const K = require(join(ROOT, 'assets/js/kitchen-converter.js'));
 const DATA = JSON.parse(readFileSync(join(ROOT, '_build/kitchen/ingredients.json'), 'utf8'));
 const SITE = 'https://lazycattools.com';
 const CSS_SITE = '/assets/css/site.css?v=5';
-const CSS_KITCHEN = '/assets/css/kitchen.css?v=4';
+const CSS_KITCHEN = '/assets/css/kitchen.css?v=5';
 const JS_KITCHEN = '/assets/js/kitchen-converter.js?v=3';
 const JS_RECIPE = '/assets/js/recipe-tools.js?v=2';
 
@@ -535,6 +536,7 @@ const TOOL_BLURBS = [
   ['/kitchen/butter-converter/', 'Butter Converter', 'Sticks to cups, tablespoons and grams, and European blocks to sticks.'],
   ['/kitchen/oven-temperature/', 'Oven Temperature Converter', '°F, °C and gas mark, with fan oven settings.'],
   ['/kitchen/pan-size-converter/', 'Pan Size Converter', 'Baking in a different pan? Get the number to multiply your recipe by.'],
+  ...KITCHEN_TOOLS_2.map((t) => [t.path, t.name, t.blurb]),
 ];
 
 // ── hub ──────────────────────────────────────────────────────────────────────
@@ -610,7 +612,7 @@ function sitemap() {
     ...RANDOMIZERS.map((t) => [toolUrl(t), 'monthly', t.priority]),
   ];
   const pages = [['/pages/about/', 'yearly', '0.3'], ['/pages/privacy/', 'yearly', '0.3'], ['/pages/contact/', 'yearly', '0.3'], ['/pages/terms/', 'yearly', '0.3']];
-  const kitchen = generated.map((p) => [p, 'monthly', (p === '/kitchen/' || TOOL_BLURBS.some((t) => t[0] === p)) ? '0.9' : '0.7']);
+  const kitchen = generated.map((p) => [p, 'monthly', KITCHEN_TOOLS_2.some((t) => t.path === p) ? '0.8' : (p === '/kitchen/' || TOOL_BLURBS.some((t) => t[0] === p)) ? '0.9' : '0.7']);
   const all = [...fixed, ...kitchen, ...pages];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -644,6 +646,36 @@ ${GUIDES.map((gd) => `- [${gd.title}](${SITE}${gd.path}): ${gd.description}`).jo
   writeFileSync(file, txt);
 }
 
+// ── homepage Kitchen cards ───────────────────────────────────────────────────
+function homeKitchen() {
+  const file = join(ROOT, 'index.html');
+  const svg = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+  const cards = [
+    { path: '/kitchen/cups-to-grams/', name: 'Cups to Grams Converter', blurb: `Cups, spoons, grams and ounces for ${ING.length} baking ingredients.`, icon: svg('<path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.7h-7a2 2 0 0 1-2-1.7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/>') },
+    { path: '/kitchen/recipe-converter/', name: 'Recipe Converter', blurb: 'Paste a whole recipe and convert every line to grams.', icon: svg('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>') },
+    ...KITCHEN_TOOLS_2,
+    { path: '/kitchen/', name: 'All Kitchen Tools', blurb: 'Recipe scaler, butter, oven temperatures, pans and ingredient charts.', icon: svg('<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>') },
+  ];
+  const html = cards.map((t) => `        <a href="${t.path}" class="tool-card-link">
+          <div class="tool-card-icon" aria-hidden="true">
+            ${t.icon}
+          </div>
+          <h3>${esc(t.name)}</h3>
+          <p>${esc(t.blurb)}</p>
+          <div class="tool-card-footer">
+            <span class="tool-card-tag">Free</span>
+            <svg class="tool-card-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>`).join('\n\n');
+  const re = /(<!-- kitchen-cards:start[^>]*-->)[\s\S]*?(<!-- kitchen-cards:end -->)/;
+  const txt = readFileSync(file, 'utf8');
+  if (!re.test(txt)) throw new Error('index.html: missing kitchen-cards markers');
+  writeFileSync(file, txt.replace(re, `$1\n${html}\n        $2`));
+}
+
 // ── run ──────────────────────────────────────────────────────────────────────
 // Remove previously generated pages (marked in their head) so renamed or
 // deleted ingredients don't leave stale pages behind.
@@ -667,4 +699,5 @@ DATA.amounts.grams.forEach(gramsPage);
 DATA.amounts.cups.forEach(cupsPage);
 sitemap();
 llms();
+homeKitchen();
 console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 5 + RANDOMIZERS.length} URLs.`);

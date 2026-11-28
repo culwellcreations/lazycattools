@@ -42,6 +42,14 @@ Lazy Cat Tools (lazycattools.com) is a collection of lightweight, client-side ut
 - [Butter Converter](https://lazycattools.com/kitchen/butter-converter/): Sticks to cups, tablespoons and grams, and European blocks to sticks.
 - [Oven Temperature Converter](https://lazycattools.com/kitchen/oven-temperature/): °F, °C and gas mark, with fan oven settings.
 - [Pan Size Converter](https://lazycattools.com/kitchen/pan-size-converter/): Baking in a different pan? Get the number to multiply your recipe by.
+- [Air Fryer Converter](https://lazycattools.com/kitchen/air-fryer-converter/): Turn oven temperature and time into air fryer settings, and back.
+- [Meat Temperature & Cooking Time](https://lazycattools.com/kitchen/meat-temperature/): Safe USDA temperatures, rest times and roasting estimates.
+- [Coffee Ratio Calculator](https://lazycattools.com/kitchen/coffee-ratio/): Grams of coffee and water for drip, French press, cold brew or espresso.
+- [Rice to Water Ratio](https://lazycattools.com/kitchen/rice-to-water-ratio/): Water and cooking time for six kinds of rice, stovetop or Instant Pot.
+- [Ingredient Substitutions](https://lazycattools.com/kitchen/ingredient-substitutions/): Out of eggs, honey, chocolate or the right salt? Swap with the right amount.
+- [Cup Fraction Calculator](https://lazycattools.com/kitchen/cup-fraction-calculator/): Turn 0.66 cups into ⅔ cup, or the spoons that add up to it.
+- [Instant Pot Cooking Times](https://lazycattools.com/kitchen/pressure-cooker-times/): Searchable pressure cooker times and release types.
+- [Turkey Cooking Time Calculator](https://lazycattools.com/kitchen/turkey-cooking-time/): Roasting time, temperature, rest and thawing days by weight.
 - [Cups to Grams Converter](https://lazycattools.com/kitchen/cups-to-grams/): Convert cups, tablespoons, teaspoons, grams and ounces for 28 baking ingredients, using ingredient-specific weights (e.g. 1 cup all-purpose flour = 120 g, spooned and leveled).
 - [All-Purpose Flour Cups to Grams](https://lazycattools.com/kitchen/all-purpose-flour-cups-to-grams/): 1 cup = 120 g (spooned into the cup and leveled).
 - [Granulated Sugar Cups to Grams](https://lazycattools.com/kitchen/granulated-sugar-cups-to-grams/): 1 cup = 200 g (scooped and leveled (it doesn't pack)).
