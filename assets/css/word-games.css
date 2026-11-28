@@ -1,0 +1,135 @@
+/* Word Games pages. Loads after site.css and tool.css; brand tokens come from site.css. */
+
+input::placeholder, textarea::placeholder { color: var(--stone); opacity: 1; }
+
+/* Letter entry: one big input with its button beside it (stacked on phones) */
+.wg-entry { display: flex; gap: 0.6rem; align-items: stretch; }
+.wg-entry .btn-primary { width: auto; flex: 0 0 auto; padding-inline: 1.5rem; }
+input.wg-letters {
+  flex: 1; min-width: 0;
+  min-height: 56px;
+  font-size: 1.45rem; font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+input.wg-letters::placeholder { letter-spacing: 0.02em; text-transform: none; font-weight: 600; font-size: 1.05rem; }
+.wg-entry-meta { display: flex; justify-content: space-between; gap: 0.75rem; align-items: baseline; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .wg-entry { flex-direction: column; }
+  .wg-entry .btn-primary { width: 100%; }
+}
+
+/* Filters */
+.wg-filters { border: 0; padding: 0; margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.wg-filters legend {
+  padding: 0; margin-bottom: 0.5rem;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stone);
+}
+.wg-filters input[type="text"] { text-transform: uppercase; font-weight: 700; text-align: center; }
+.wg-filters .btn-text { align-self: flex-start; min-height: 44px; }
+
+/* Results */
+.wg-results-head { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.wg-summary { font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+.wg-summary .wg-sub { display: block; font-weight: 600; font-size: 0.85rem; color: var(--stone); margin-top: 0.15rem; }
+
+.wg-scroll {
+  max-height: min(70vh, 34rem);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 0.25rem 0.9rem 0.9rem;
+}
+.wg-scroll:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.wg-group + .wg-group { margin-top: 0.4rem; }
+.wg-group h3 {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--bg);
+  padding: 0.7rem 0 0.45rem;
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.04em; color: var(--stone);
+}
+
+.wg-words {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.4rem;
+}
+.wg-words li {
+  display: flex; align-items: center; gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.25rem 0.3rem 0.25rem 0.7rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.wg-word {
+  flex: 1; min-width: 0;
+  font-weight: 800; letter-spacing: 0.05em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.wg-copy {
+  flex: 0 0 auto;
+  min-height: 36px; min-width: 44px;
+  padding: 0 0.5rem;
+  border: 0; border-radius: var(--radius-sm);
+  background: transparent;
+  font: inherit; font-size: 0.78rem; font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+}
+.wg-copy:hover { background: var(--bg); text-decoration: underline; }
+.wg-copy:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+.wg-empty { padding: 1rem 0.25rem 0.4rem; font-weight: 600; color: var(--ink); }
+.wg-empty a { color: var(--accent); font-weight: 700; }
+
+.wg-after { font-size: 0.92rem; color: var(--stone); }
+.wg-after a { color: var(--accent); font-weight: 700; text-underline-offset: 2px; }
+
+/* Scrabble: score and blank notes on each word */
+.wg-words.scored { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+.wg-pts {
+  flex: 0 0 auto;
+  font-size: 0.8rem; font-weight: 800; color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.wg-blank { display: block; font-size: 0.75rem; font-weight: 600; color: var(--stone); letter-spacing: 0; text-transform: none; }
+
+.wg-tiles { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.wg-tiles caption { text-align: left; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stone); padding-bottom: 0.4rem; }
+.wg-tiles th, .wg-tiles td { padding: 0.35rem 0.6rem; border-top: 1px solid var(--border); text-align: left; }
+.wg-tiles th { font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; width: 6.5rem; }
+.wg-tiles td { font-weight: 700; letter-spacing: 0.08em; }
+
+/* Word counter */
+.wc-text { min-height: 220px; font-size: 1rem; }
+.wc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 0.9rem 1.25rem;
+}
+.wc-stat {
+  border-top: 2px solid var(--border);
+  padding: 0.6rem 0.1rem 0.2rem;
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.wc-stat dt { font-size: 0.78rem; font-weight: 700; color: var(--stone); }
+.wc-stat dd { order: -1; font-size: 1.45rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1.15; overflow-wrap: anywhere; }
+.wc-stat dd.wc-time { font-size: 1.05rem; }
+.wc-top { display: flex; flex-direction: column; gap: 0.4rem; }
+.wc-top h2 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stone); }
+.wc-top ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.wc-top li {
+  padding: 0.3rem 0.7rem;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 999px;
+  font-size: 0.9rem; font-weight: 700;
+}
+.wc-top li span { color: var(--stone); font-weight: 600; font-variant-numeric: tabular-nums; }
+.wg-contains { max-width: 14rem; }
+.wg-tm { font-size: 0.8rem; }

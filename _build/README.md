@@ -38,3 +38,14 @@ Air fryer, meat temperature, coffee ratio, rice to water, ingredient substitutio
 - **Pressure cooker rows:** `src: 'manual'` rows come from the Instant Pot manual; `src: 'common'` rows are common recipe times and show a † on the page.
 - **Test:** `node _build/test-kitchen-tools-2.mjs` after building.
 - **Cache:** bump `JS_TOOLS2` in `kitchen-tools-2.mjs` when `kitchen-tools.js` changes, and `CSS_KITCHEN` (now v5) when `kitchen.css` changes.
+
+# Word games
+
+Word Unscrambler, Anagram Solver, Scrabble Word Finder and Word Counter, at `/word-games/<slug>/`.
+
+- **List:** `_build/word-games/list.mjs` drives the homepage Word Games cards, the "More word games" block, the sitemap and `llms.txt`.
+- **Pages:** page text, controls and FAQ in `_build/word-games/<slug>.mjs`; behavior in `word-games/<slug>/tool.js`. Don't edit their `index.html`.
+- **Word list:** `_build/word-games/scowl-50-us.txt` (SCOWL size 50, US spelling, from app.aspell.net) goes through `_build/word-games/filters.mjs` into `assets/js/wordlist.js`. To drop or keep a word, edit the filters and rebuild. Keep the SCOWL copyright notice in the output; its license requires it.
+- **Engine:** `assets/js/word-games.js` (unscramble, anagrams, Scrabble scoring) is shared by the three word-list tools and the tests. The Word Counter's logic is in its own `tool.js`.
+- **Build:** `node _build/build-word-games.mjs`, then `node _build/build-kitchen.mjs` (sitemap). Script and style links carry a content hash, so there are no version numbers to bump.
+- **Test:** `node _build/test-word-games.mjs`.

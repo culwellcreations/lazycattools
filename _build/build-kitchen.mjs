@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { buildToolPages } from './tool-pages.mjs';
 import { loadGuides, buildGuidePages, guidesListHtml } from './guides.mjs';
 import { RANDOMIZERS, toolUrl } from './randomizers/list.mjs';
+import { WORD_GAMES, wordGameUrl } from './word-games/list.mjs';
 import { KITCHEN_TOOLS_2 } from './kitchen-tools-2.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -610,6 +611,7 @@ function sitemap() {
   const fixed = [
     ['/', 'weekly', '1.0'],
     ...RANDOMIZERS.map((t) => [toolUrl(t), 'monthly', t.priority]),
+    ...WORD_GAMES.map((t) => [wordGameUrl(t), 'monthly', t.priority]),
   ];
   const pages = [['/pages/about/', 'yearly', '0.3'], ['/pages/privacy/', 'yearly', '0.3'], ['/pages/contact/', 'yearly', '0.3'], ['/pages/terms/', 'yearly', '0.3']];
   const kitchen = generated.map((p) => [p, 'monthly', KITCHEN_TOOLS_2.some((t) => t.path === p) ? '0.8' : (p === '/kitchen/' || TOOL_BLURBS.some((t) => t[0] === p)) ? '0.9' : '0.7']);
@@ -700,4 +702,4 @@ DATA.amounts.cups.forEach(cupsPage);
 sitemap();
 llms();
 homeKitchen();
-console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 5 + RANDOMIZERS.length} URLs.`);
+console.log(`Built ${generated.length} kitchen + guide pages; sitemap has ${generated.length + 5 + RANDOMIZERS.length + WORD_GAMES.length} URLs.`);
